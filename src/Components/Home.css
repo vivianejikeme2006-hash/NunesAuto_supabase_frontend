@@ -1,0 +1,73 @@
+.homePage {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 80px 60px;
+}
+
+.heroText h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.heroText h1 span {
+  color: #2f6fed;
+}
+
+.heroText p {
+  color: #cccccc;
+  margin: 16px 0 24px;
+  max-width: 420px;
+}
+
+.heroButton {
+  background-color: #2f6fed;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.heroButton:hover {
+  background-color: #2559c7;
+}
+
+.categories {
+  background-color: #2f6fed;
+  padding: 50px 60px;
+}
+
+.categories h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.categoriesSubtext {
+  color: #dbe6ff;
+  margin-bottom: 24px;
+}
+
+.categoryGrid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.categoryCard {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 160px;
+  text-align: center;
+  font-weight: 600;
+}
