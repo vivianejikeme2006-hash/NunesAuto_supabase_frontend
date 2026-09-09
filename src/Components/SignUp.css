@@ -1,0 +1,137 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e1e1e;
+  padding: 40px 20px;
+}
+
+.formContainer {
+  background-color: #262626;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.formContainer hr {
+  border: none;
+  border-top: 1px solid #333333;
+  margin: 16px 0 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form label {
+  color: #cccccc;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form input::placeholder {
+  color: #777777;
+}
+
+.form input:focus {
+  border-color: #2f6fed;
+}
+
+.genderGroup {
+  border: none;
+  padding: 0;
+  margin: 14px 0 4px;
+}
+
+.genderGroup legend {
+  color: #cccccc;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.genderGroup label {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 4px;
+  margin-top: 0;
+}
+
+.genderGroup input[type="radio"] {
+  accent-color: #2f6fed;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff5c5c;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.button {
+  background-color: #2f6fed;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #2559c7;
+}
+
+.button:disabled {
+  background-color: #3a3a3a;
+  cursor: not-allowed;
+}
+
+.form p {
+  color: #cccccc;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.form a {
+  color: #2f6fed;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
