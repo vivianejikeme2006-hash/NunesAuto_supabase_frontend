@@ -1,0 +1,37 @@
+import { Link, useNavigate } from "react-router-dom";
+import "./NavBar.css";
+
+function NavBar() {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
+  return (
+    <nav className="navBar">
+      <Link to="/" className="navLogo">NunesAuto</Link>
+
+      <div className="navLinks">
+        <Link to="/home" className="navLink">Home</Link>
+        <Link to="/products" className="navLink">Products</Link>
+        <Link to="/about" className="navLink">About Us</Link>
+      </div>
+
+      <div className="navIcons">
+        {user ? (
+          <button className="navIconButton" onClick={handleLogout}>Log Out</button>
+        ) : (
+          <>
+            <Link to="/login" className="navIconButton">Log In</Link>
+            <Link to="/signup" className="navIconButtonPrimary">Sign Up</Link>
+          </>
+        )}
+      </div>
+    </nav>
+  );
+}
+
+export default NavBar;

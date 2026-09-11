@@ -8,12 +8,12 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      navigate("/home");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+  //   if (user) {
+  //     navigate("/home");
+  //   }
+  // }, [navigate]);
 
   const handleChange = (field) => (e) => {
     setData((prev) => ({ ...prev, [field]: e.target.value }));
@@ -140,4 +140,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default SignUp;
