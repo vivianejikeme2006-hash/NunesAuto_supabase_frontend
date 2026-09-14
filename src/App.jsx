@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import SignUp from "./Components/SignUp"
-import LogInForm from "./Components/LogIn"
+import AuthPage from "./Components/AuthPage"
 import Home from "./Components/Home"
 
 function ProtectedRoute({ children }) {
@@ -19,8 +18,8 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<RootRedirect />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogInForm />} />
+          <Route path="/signup" element={<AuthPage initialMode="signup" />} />
+          <Route path="/login" element={<AuthPage initialMode="login" />} />
           <Route
             path="/home"
             element={
