@@ -23,7 +23,7 @@ function Home() {
         </div>
 
         <div className="heroImage">
-          <img src="/images/hero-car.png" alt="Featured car" />
+          <img src="/homeCar.jpg" alt="Featured car"  />
         </div>
       </section>
 
@@ -32,19 +32,19 @@ function Home() {
         <p className="categoriesSubtext">Find the car part you are looking for</p>
         <div className="categoryGrid">
           <div className="categoryCard">
-            <img src="/images/wheels-tires.jpg" alt="Wheels & Tires" />
+            <img src="/homeTires.jpg" alt="Wheels & Tires" />
             <span>Wheels &amp; Tires</span>
           </div>
           <div className="categoryCard">
-            <img src="/images/accessories.jpg" alt="Accessories" />
+            <img src="/homeInterior.jpg" alt="Accessories" />
             <span>Accessories</span>
           </div>
           <div className="categoryCard">
-            <img src="/images/engines.jpg" alt="Engines" />
+            <img src="/homeEngine.jpg" alt="Engines" />
             <span>Engines</span>
           </div>
           <div className="categoryCard">
-            <img src="/images/lights.jpg" alt="Lights" />
+            <img src="/homeLights.jpg" alt="Lights" />
             <span>Lights</span>
           </div>
         </div>

@@ -7,14 +7,14 @@
 }
 
 .authWrapper {
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   background: #111;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* =========================================
@@ -23,13 +23,13 @@
 
 .authContainer {
   position: relative;
-  width: 900px;
+  width: 100%;
   max-width: 100%;
-  min-height: 600px;
+  min-height: 100dvh;
   background: #fff;
-  border-radius: 18px;
+  /* border-radius: 18px; */
   overflow: hidden;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  /* box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45); */
 }
 
 /* =========================================
@@ -369,6 +369,7 @@
 ========================================= */
 
 .overlayImage {
+  border:2px solid red !important;
   position: absolute;
   inset: 0;
   width: 100%;
@@ -446,6 +447,52 @@
 .ghostButton:hover {
   background: white;
   color: #2463d4;
+}
+
+.homeBlue{
+    min-width: 50px;
+  height: 46px;
+  padding: 0 25px;
+  border-style:hidden;
+  border-bottom: 2px solid white;
+  /* border-radius: 10px; */
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position : fixed;
+  top: 5px;
+  left: 30px;
+}
+
+.homeBlue:hover {
+  background: white;
+  color: #2463d4;
+}
+
+.homeWhite{
+    min-width: 50px;
+  height: 46px;
+  padding: 0 25px;
+  border-style:hidden;
+  border-bottom: 2px solid #2463d4;
+  /* border-radius: 10px; */
+  background: transparent;
+  color: #2463d4;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position : fixed;
+  top: 5px;
+  left: 30px;
+}
+
+.homeWhite:hover {
+  background: #2463d4;
+  color: white;
 }
 
 /* =========================================

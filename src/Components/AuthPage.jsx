@@ -6,6 +6,8 @@ import "./AuthPage.css";
 function AuthPage({ initialMode = "login" }) {
   const [isSignUp, setIsSignUp] = useState(initialMode === "signup");
 
+  const [homeBtnStyling, setHomeBtnStyling ] = useState()
+
   const [signUpData, setSignUpData] = useState({
     NameAndSurname: "",
     Email: "",
@@ -279,7 +281,7 @@ function AuthPage({ initialMode = "login" }) {
               )}
             </button>
 
-            <p className="mobileToggleText">
+            {/* <p className="mobileToggleText">
               Already have an account?{" "}
 
               <button
@@ -289,7 +291,8 @@ function AuthPage({ initialMode = "login" }) {
               >
                 Sign In
               </button>
-            </p>
+              
+            </p> */}
 
           </form>
         </div>
@@ -385,8 +388,15 @@ function AuthPage({ initialMode = "login" }) {
                 "Sign In"
               )}
             </button>
+              <button
+                  type="button"
+                  className="homeWhite"
+                  onClick={() => navigate("/")}
+                >
+                  Home
+                </button>
 
-            <p className="mobileToggleText">
+            {/* <p className="mobileToggleText">
               Don't have an account?{" "}
 
               <button
@@ -396,7 +406,7 @@ function AuthPage({ initialMode = "login" }) {
               >
                 Create Account
               </button>
-            </p>
+            </p> */}
 
           </form>
         </div>
@@ -414,7 +424,7 @@ function AuthPage({ initialMode = "login" }) {
             <div className="overlayPanel overlayLeft">
 
               <img
-                src="/images/bmw-m4.jpg"
+                src="../car.jpg"
                 alt="BMW M4"
                 className="overlayImage"
               />
@@ -444,7 +454,14 @@ function AuthPage({ initialMode = "login" }) {
                 >
                   Sign In
                 </button>
-
+  <button
+                  type="button"
+                  className="homeBlue"
+                  onClick={() => navigate("/")}
+                >
+                  Home
+                </button>
+                 
               </div>
 
             </div>
@@ -454,7 +471,7 @@ function AuthPage({ initialMode = "login" }) {
             <div className="overlayPanel overlayRight">
 
               <img
-                src="/images/bmw-m4.jpg"
+                src="../car.jpg"
                 alt="BMW M4"
                 className="overlayImage"
               />
@@ -480,7 +497,9 @@ function AuthPage({ initialMode = "login" }) {
                 <button
                   type="button"
                   className="ghostButton"
-                  onClick={() => switchMode(true)}
+                  onClick={() =>
+                     switchMode(true)
+                    }
                 >
                   Create Account
                 </button>
