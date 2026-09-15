@@ -15,9 +15,9 @@ function NavBar() {
       <Link to="/" className="navLogo">NunesAuto</Link>
 
       <div className="navLinks">
-        <Link to="/home" className="navLink">Home</Link>
-        <Link to="/products" className="navLink">Products</Link>
-        <Link to="/about" className="navLink">About Us</Link>
+        <Link to="/" className="navLink">Home</Link>
+        <Link to="/Products" className="navLink">Products</Link>
+        <Link to="/About" className="navLink">About Us</Link>
       </div>
 
       <div className="navIcons">
@@ -26,7 +26,7 @@ function NavBar() {
         ) : (
           <>
             <Link to="/login" className="navIconButton">Log In</Link>
-            <Link to="/signup" className="navIconButtonPrimary">Sign Up</Link>
+            {/* <Link to="/signup" className="navIconButtonPrimary">Sign Up</Link> */}
           </>
         )}
       </div>
