@@ -369,6 +369,7 @@
 ========================================= */
 
 .overlayImage {
+  border:2px solid red !important;
   position: absolute;
   inset: 0;
   width: 100%;

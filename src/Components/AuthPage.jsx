@@ -414,7 +414,7 @@ function AuthPage({ initialMode = "login" }) {
             <div className="overlayPanel overlayLeft">
 
               <img
-                src="/images/bmw-m4.jpg"
+                src="../car.jpg"
                 alt="BMW M4"
                 className="overlayImage"
               />
@@ -454,7 +454,7 @@ function AuthPage({ initialMode = "login" }) {
             <div className="overlayPanel overlayRight">
 
               <img
-                src="/images/bmw-m4.jpg"
+                src="../car.jpg"
                 alt="BMW M4"
                 className="overlayImage"
               />
