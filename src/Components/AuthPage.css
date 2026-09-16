@@ -369,7 +369,7 @@
 ========================================= */
 
 .overlayImage {
-  border:2px solid red !important;
+  border: 2px solid red !important;
   position: absolute;
   inset: 0;
   width: 100%;
@@ -449,11 +449,11 @@
   color: #2463d4;
 }
 
-.homeBlue{
-    min-width: 50px;
+.homeBlue {
+  min-width: 50px;
   height: 46px;
   padding: 0 25px;
-  border-style:hidden;
+  border-style: hidden;
   border-bottom: 2px solid white;
   /* border-radius: 10px; */
   background: transparent;
@@ -462,7 +462,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: 0.25s ease;
-  position : fixed;
+  position: fixed;
   top: 5px;
   left: 30px;
 }
@@ -472,11 +472,11 @@
   color: #2463d4;
 }
 
-.homeWhite{
-    min-width: 50px;
+.homeWhite {
+  min-width: 50px;
   height: 46px;
   padding: 0 25px;
-  border-style:hidden;
+  border-style: hidden;
   border-bottom: 2px solid #2463d4;
   /* border-radius: 10px; */
   background: transparent;
@@ -485,7 +485,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: 0.25s ease;
-  position : fixed;
+  position: fixed;
   top: 5px;
   left: 30px;
 }

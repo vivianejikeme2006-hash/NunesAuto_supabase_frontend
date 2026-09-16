@@ -1,87 +1,167 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AuthPage.css";
+import { createClient } from "@supabase/supabase-js";
+
+
 
 function AuthPage({ initialMode = "login" }) {
+
   const [isSignUp, setIsSignUp] = useState(initialMode === "signup");
 
-  const [homeBtnStyling, setHomeBtnStyling ] = useState()
-
+  // USESTATE THAT STORES THE DATA OF A USER THAT IS SIGNING UP
   const [signUpData, setSignUpData] = useState({
     NameAndSurname: "",
     Email: "",
     Password: "",
   });
 
+  // USESTATE THAT STORES THE DATA OF A USER THAT IS SIGNING UP
   const [signInData, setSignInData] = useState({
     Email: "",
     Password: "",
   });
 
+  // USED TO DISPLAY ERROR MESSAGES IF THE USER SIGNS IN WITH THE WRONG CREDENTIALS OR WRONG REQUIRMENTS
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // USED TO NAVIGATE BETWEEN DIFFERENT COMPONENTS AND PAGE STATES
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+  // CONNECTION USED TO CONNECT TO STRING TO CONNECT TO SUPABASE
+  const supabase = createClient(
+    import.meta.env.VITE_PUBLIC_SUPABASE_URL,
+    import.meta.env.VITE_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+  );
 
-    if (user) {
-      navigate("/home");
+
+
+  // SUPABASE FUNCTION USED TO LET A USER SIGNUP
+  async function signUpNewUser(event) {
+    
+    try {
+
+      // PREVENTING THE NATURAL BEHAVIOUR OF A FORM FROM OCCURING
+    event.preventDefault();
+
+    //DESTRUCTURING THE REQUIRED VALUES NEEDED TO SIGN UP 
+const { NameAndSurname, Email, Password } = signUpData
+
+      // MAKING SURE THAT ALL THE INPUT FIELDS HAVE BEEN FILLED IN
+    if (!NameAndSurname.trim() || !Email.trim() || !Password) {
+      console.log( "Log the destructured value",NameAndSurname )
+      console.log( "Log the value",signUpData.NameAndSurname )
+      setError("Please complete all fields.");
+      return;
     }
-  }, [navigate]);
 
-  const handleSignUpChange = (e) => {
-    const { name, value } = e.target;
+    // ENSURING THAT A VALID PASSWORD IS BEING USED TO CREATE TTHE ACCOUNT
+    if (Password.length < 6) {
+      setError("Password must contain at least 6 characters.");
+      return;
+    }
 
-    setSignUpData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    // SIGNING THE USER UP ONTO SUPABASE
+    const { data, error } = await supabase.auth.signUp({
+      name: signUpData.NameAndSurname,
+      email: signUpData.Email,
+      password: signUpData.Password,
+    });
+
+    if (error) {
+      alert(error);
+      return alert(error);
+    }
+
+    if (data) {
+      const response = await fetch(
+        `${import.meta.env.VITE_RENDER_URL_BACKEND}/signup`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userName: signUpData.NameAndSurname,
+            email: signUpData.Email,
+          }),
+        },
+      );
+
+      let { message } = await response.json();
+      console.log(message);
+      navigate(-1);
+    }
+  }
+    catch (error){
+      console.error(error)
+    }
+  }
+
+  // SUPABASE FUNCTION USED TO LET A USER SIGN INTO THE APPLICATION
+  async function signInWithEmail(event) {
+    event.preventDefault();
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: signInData.Email,
+      password: signInData.Password,
+    });
+
+    if (error) {
+      alert(error);
+      return alert(error);
+    }
+    console.log(data);
+    navigate(-1);
+  }
+
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+
+  //   if (user) {
+  //     navigate("/");
+  //   }
+  // }, [navigate]);
+
+
+
+  // CONTROLLING THE DISPLAY OF THE INPUT FIELDS ON THE SIGN IN PAGE 
+  const handleSignUpChange = (event) => {
+    const currentInput = event.target.className;
+    const currentInputId = event.target.id;
+    const currentValue = event.target.value;
+
+    setSignUpData((prev) => {
+      return ({ ...prev, [currentInput] : currentValue });
+    });
 
     setError("");
   };
 
-  const handleSignInChange = (e) => {
-    const { name, value } = e.target;
 
-    setSignInData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+  // CONTROLLING THE DISPLAY OF THE INPUT FIELDS ON THE SIGN IN PAGE 
+  const handleSignInChange = (event) => {
+    const currentInput = event.target.className;
+    const currentValue = event.target.value;
+
+    setSignInData((prev) => {
+      return ({ ...prev, [currentInput]: currentValue });
+    });
 
     setError("");
   };
 
+
+  
   const switchMode = (signup) => {
     setIsSignUp(signup);
     setError("");
   };
 
   const handleSignUp = async (e) => {
-    e.preventDefault();
-    setError("");
 
-    const {
-      NameAndSurname,
-      Email,
-      Password,
-    } = signUpData;
+    const { NameAndSurname, Email, Password } = signUpData;
 
-    if (
-      !NameAndSurname.trim() ||
-      !Email.trim() ||
-      !Password
-    ) {
-      setError("Please complete all fields.");
-      return;
-    }
-
-    if (Password.length < 6) {
-      setError("Password must contain at least 6 characters.");
-      return;
-    }
 
     setLoading(true);
 
@@ -102,8 +182,7 @@ function AuthPage({ initialMode = "login" }) {
 
       if (!res.ok) {
         throw new Error(
-          data?.message ||
-            `Unable to create account (${res.status})`
+          data?.message || `Unable to create account (${res.status})`,
         );
       }
 
@@ -114,22 +193,20 @@ function AuthPage({ initialMode = "login" }) {
       console.error("Signup error:", err);
 
       setError(
-        err.message ||
-          "Something went wrong while creating your account."
+        err.message || "Something went wrong while creating your account.",
       );
     } finally {
       setLoading(false);
     }
   };
 
+
+
   const handleSignIn = async (e) => {
     e.preventDefault();
     setError("");
 
-    const {
-      Email,
-      Password,
-    } = signInData;
+    const { Email, Password } = signInData;
 
     if (!Email.trim() || !Password) {
       setError("Please enter your email and password.");
@@ -139,19 +216,14 @@ function AuthPage({ initialMode = "login" }) {
     setLoading(true);
 
     try {
-      const credentials = btoa(
-        `${Email.trim()}:${Password}`
-      );
+      const credentials = btoa(`${Email.trim()}:${Password}`);
 
-      const res = await fetch(
-        "http://localhost:3000/checkpassword",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Basic ${credentials}`,
-          },
-        }
-      );
+      const res = await fetch("http://localhost:3000/checkpassword", {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${credentials}`,
+        },
+      });
 
       if (!res.ok) {
         throw new Error("Invalid email or password.");
@@ -159,19 +231,13 @@ function AuthPage({ initialMode = "login" }) {
 
       const data = await res.json();
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify(data)
-      );
+      localStorage.setItem("user", JSON.stringify(data));
 
       navigate("/home");
     } catch (err) {
       console.error("Login error:", err);
 
-      setError(
-        err.message ||
-          "Unable to sign in. Please try again."
-      );
+      setError(err.message || "Unable to sign in. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -179,13 +245,7 @@ function AuthPage({ initialMode = "login" }) {
 
   return (
     <div className="authWrapper">
-
-      <div
-        className={`authContainer ${
-          isSignUp ? "rightPanelActive" : ""
-        }`}
-      >
-
+      <div className={`authContainer ${isSignUp ? "rightPanelActive" : ""}`}>
         {/* ================================
             SIGN UP FORM
         ================================= */}
@@ -195,8 +255,7 @@ function AuthPage({ initialMode = "login" }) {
             !isSignUp ? "mobileHidden" : ""
           }`}
         >
-          <form onSubmit={handleSignUp}>
-
+          <form onSubmit={signUpNewUser}>
             <div className="authLogo">
               <span>NUNES</span>
               <small>AUTO</small>
@@ -209,52 +268,46 @@ function AuthPage({ initialMode = "login" }) {
             </p>
 
             <div className="inputGroup">
-              <label htmlFor="signup-name">
-                Full Name
-              </label>
+              <label htmlFor="signup-name">Full Name</label>
 
               <input
                 id="signup-name"
                 type="text"
                 name="NameAndSurname"
+                className="NameAndSurname"
                 placeholder="Enter your full name"
-                value={signUpData.NameAndSurname}
+                defaultValue={signUpData.NameAndSurname}
                 onChange={handleSignUpChange}
-                autoComplete="name"
                 disabled={loading}
               />
             </div>
 
             <div className="inputGroup">
-              <label htmlFor="signup-email">
-                Email Address
-              </label>
+              <label htmlFor="signup-email">Email Address</label>
 
               <input
                 id="signup-email"
                 type="email"
                 name="Email"
+                className="Email"
                 placeholder="Enter your email"
-                value={signUpData.Email}
+                defaultValue={signUpData.Email}
                 onChange={handleSignUpChange}
-                autoComplete="email"
                 disabled={loading}
               />
             </div>
 
             <div className="inputGroup">
-              <label htmlFor="signup-password">
-                Password
-              </label>
+              <label htmlFor="signup-password">Password</label>
 
               <input
                 id="signup-password"
                 type="password"
                 name="Password"
+                className="Password"
                 placeholder="Create a password"
-                value={signUpData.Password}
+                defaultValue={signUpData.Password}
                 onChange={handleSignUpChange}
-                autoComplete="new-password"
                 disabled={loading}
               />
             </div>
@@ -266,11 +319,7 @@ function AuthPage({ initialMode = "login" }) {
               </div>
             )}
 
-            <button
-              type="submit"
-              className="authButton"
-              disabled={loading}
-            >
+            <button type="submit" className="authButton" disabled={loading}>
               {loading ? (
                 <>
                   <span className="spinner"></span>
@@ -280,20 +329,6 @@ function AuthPage({ initialMode = "login" }) {
                 "Create Account"
               )}
             </button>
-
-            {/* <p className="mobileToggleText">
-              Already have an account?{" "}
-
-              <button
-                type="button"
-                className="textButton"
-                onClick={() => switchMode(false)}
-              >
-                Sign In
-              </button>
-              
-            </p> */}
-
           </form>
         </div>
 
@@ -306,8 +341,7 @@ function AuthPage({ initialMode = "login" }) {
             isSignUp ? "mobileHidden" : ""
           }`}
         >
-          <form onSubmit={handleSignIn}>
-
+          <form onSubmit={signInWithEmail}>
             <div className="authLogo">
               <span>NUNES</span>
               <small>AUTO</small>
@@ -315,40 +349,36 @@ function AuthPage({ initialMode = "login" }) {
 
             <h1>Welcome Back</h1>
 
-            <p className="authSubtitle">
-              Sign in to continue to Nunes Auto.
-            </p>
+            <p className="authSubtitle">Sign in to continue to Nunes Auto.</p>
 
             <div className="inputGroup">
-              <label htmlFor="signin-email">
-                Email Address
-              </label>
+              <label htmlFor="signin-email">Email Address</label>
 
               <input
                 id="signin-email"
                 type="email"
                 name="Email"
+                className="Email"
                 placeholder="Enter your email"
-                value={signInData.Email}
+                defaultValue={signInData.Email}
                 onChange={handleSignInChange}
-                autoComplete="email"
+                // autoComplete="email"
                 disabled={loading}
               />
             </div>
 
             <div className="inputGroup">
-              <label htmlFor="signin-password">
-                Password
-              </label>
+              <label htmlFor="signin-password">Password</label>
 
               <input
                 id="signin-password"
                 type="password"
                 name="Password"
+                className="Password"
                 placeholder="Enter your password"
-                value={signInData.Password}
+                defaultValue={signInData.Password}
                 onChange={handleSignInChange}
-                autoComplete="current-password"
+                // autoComplete="current-password"
                 disabled={loading}
               />
             </div>
@@ -359,7 +389,7 @@ function AuthPage({ initialMode = "login" }) {
                 className="textButton"
                 onClick={() =>
                   setError(
-                    "Please contact Nunes Auto support to reset your password."
+                    "Please contact Nunes Auto support to reset your password.",
                   )
                 }
               >
@@ -374,11 +404,7 @@ function AuthPage({ initialMode = "login" }) {
               </div>
             )}
 
-            <button
-              type="submit"
-              className="authButton"
-              disabled={loading}
-            >
+            <button type="submit" className="authButton" disabled={loading}>
               {loading ? (
                 <>
                   <span className="spinner"></span>
@@ -388,26 +414,13 @@ function AuthPage({ initialMode = "login" }) {
                 "Sign In"
               )}
             </button>
-              <button
-                  type="button"
-                  className="homeWhite"
-                  onClick={() => navigate("/")}
-                >
-                  Home
-                </button>
-
-            {/* <p className="mobileToggleText">
-              Don't have an account?{" "}
-
-              <button
-                type="button"
-                className="textButton"
-                onClick={() => switchMode(true)}
-              >
-                Create Account
-              </button>
-            </p> */}
-
+            <button
+              type="button"
+              className="homeWhite"
+              onClick={() => navigate("/")}
+            >
+              Home
+            </button>
           </form>
         </div>
 
@@ -416,30 +429,20 @@ function AuthPage({ initialMode = "login" }) {
         ================================= */}
 
         <div className="overlayContainer">
-
           <div className="overlay">
-
             {/* LEFT OVERLAY */}
 
             <div className="overlayPanel overlayLeft">
-
-              <img
-                src="../car.jpg"
-                alt="BMW M4"
-                className="overlayImage"
-              />
+              <img src="../car.jpg" alt="BMW M4" className="overlayImage" />
 
               <div className="imageOverlay"></div>
 
               <div className="overlayContent">
-
                 <div className="overlayBrand">
                   NUNES <span>AUTO</span>
                 </div>
 
-                <h1>
-                  Welcome Back!
-                </h1>
+                <h1>Welcome Back!</h1>
 
                 <p>
                   Your next drive is waiting.
@@ -454,39 +457,29 @@ function AuthPage({ initialMode = "login" }) {
                 >
                   Sign In
                 </button>
-  <button
+                <button
                   type="button"
                   className="homeBlue"
                   onClick={() => navigate("/")}
                 >
                   Home
                 </button>
-                 
               </div>
-
             </div>
 
             {/* RIGHT OVERLAY */}
 
             <div className="overlayPanel overlayRight">
-
-              <img
-                src="../car.jpg"
-                alt="BMW M4"
-                className="overlayImage"
-              />
+              <img src="../car.jpg" alt="BMW M4" className="overlayImage" />
 
               <div className="imageOverlay"></div>
 
               <div className="overlayContent">
-
                 <div className="overlayBrand">
                   NUNES <span>AUTO</span>
                 </div>
 
-                <h1>
-                  Hello, Driver!
-                </h1>
+                <h1>Hello, Driver!</h1>
 
                 <p>
                   New to Nunes Auto?
@@ -497,23 +490,15 @@ function AuthPage({ initialMode = "login" }) {
                 <button
                   type="button"
                   className="ghostButton"
-                  onClick={() =>
-                     switchMode(true)
-                    }
+                  onClick={() => switchMode(true)}
                 >
                   Create Account
                 </button>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }
