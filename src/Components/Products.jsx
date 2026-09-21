@@ -1,5 +1,13 @@
 import React from "react";
 import "./Products.css";
+import { useNavigate } from "react-router-dom";
+
+
+const Products = () => {
+
+  // USED TO NAVIGATE BETWEEN THE DIFFERENT COMPONENTS 
+ const navigate = useNavigate();
+
 
 // Small inline SVG icons — no external icon package needed.
 const ShoppingCart = (props) => (
@@ -56,7 +64,6 @@ function formatPrice(amount) {
   return `R ${amount.toFixed(2)}`;
 }
 
-export default function Products() {
   return (
     <div className="pp-page">
       <header className="pp-navbar">
@@ -77,10 +84,12 @@ export default function Products() {
         </nav>
 
         <div className="pp-nav-icons">
+        
           <button className="pp-icon-btn" aria-label="Cart">
             <ShoppingCart />
           </button>
-          <button className="pp-icon-btn pp-icon-btn--filled" aria-label="Account">
+          <button className="pp-icon-btn pp-icon-btn--filled" aria-label="Account"  onClick={
+            ()=>{ return navigate("/login")} }>
             <User />
           </button>
           <button className="pp-icon-btn" aria-label="Settings">
@@ -134,3 +143,5 @@ export default function Products() {
     </div>
   );
 }
+
+export default Products;

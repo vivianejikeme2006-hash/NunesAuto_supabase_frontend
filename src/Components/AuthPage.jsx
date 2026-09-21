@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./AuthPage.css";
 import { createClient } from "@supabase/supabase-js";
 
-
-
 function AuthPage({ initialMode = "login" }) {
-
   const [isSignUp, setIsSignUp] = useState(initialMode === "signup");
 
   // USESTATE THAT STORES THE DATA OF A USER THAT IS SIGNING UP
@@ -35,214 +32,123 @@ function AuthPage({ initialMode = "login" }) {
     import.meta.env.VITE_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
   );
 
-
-
   // SUPABASE FUNCTION USED TO LET A USER SIGNUP
   async function signUpNewUser(event) {
-    
     try {
-
       // PREVENTING THE NATURAL BEHAVIOUR OF A FORM FROM OCCURING
-    event.preventDefault();
+      event.preventDefault();
 
-    //DESTRUCTURING THE REQUIRED VALUES NEEDED TO SIGN UP 
-const { NameAndSurname, Email, Password } = signUpData
+      //DESTRUCTURING THE REQUIRED VALUES NEEDED TO SIGN UP
+      const { NameAndSurname, Email, Password } = signUpData;
 
       // MAKING SURE THAT ALL THE INPUT FIELDS HAVE BEEN FILLED IN
-    if (!NameAndSurname.trim() || !Email.trim() || !Password) {
-      console.log( "Log the destructured value",NameAndSurname )
-      console.log( "Log the value",signUpData.NameAndSurname )
-      setError("Please complete all fields.");
-      return;
-    }
+      if (!NameAndSurname.trim() || !Email.trim() || !Password) {
+        console.log("Log the destructured value", NameAndSurname);
+        console.log("Log the value", signUpData.NameAndSurname);
+        setError("Please complete all fields.");
+        return;
+      }
 
-    // ENSURING THAT A VALID PASSWORD IS BEING USED TO CREATE TTHE ACCOUNT
-    if (Password.length < 6) {
-      setError("Password must contain at least 6 characters.");
-      return;
-    }
+      // ENSURING THAT A VALID PASSWORD IS BEING USED TO CREATE TTHE ACCOUNT
+      if (Password.length < 6) {
+        setError("Password must contain at least 6 characters.");
+        return;
+      }
 
-    // SIGNING THE USER UP ONTO SUPABASE
-    const { data, error } = await supabase.auth.signUp({
-      name: signUpData.NameAndSurname,
-      email: signUpData.Email,
-      password: signUpData.Password,
-    });
+      // SIGNING THE USER UP ONTO SUPABASE
+      const { data, error } = await supabase.auth.signUp({
+        name: signUpData.NameAndSurname.trim(),
+        email: signUpData.Email.trim(),
+        password: signUpData.Password,
+      });
 
-    if (error) {
-      alert(error);
-      return alert(error);
-    }
+      if (error) {
+        alert(error);
+        return alert(error);
+      }
 
-    if (data) {
-      const response = await fetch(
-        `${import.meta.env.VITE_RENDER_URL_BACKEND}/signup`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userName: signUpData.NameAndSurname,
-            email: signUpData.Email,
-          }),
-        },
-      );
+      if (data) {
+        const response = await fetch(
+          `${import.meta.env.VITE_RENDER_URL_BACKEND}/signup`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              userName: signUpData.NameAndSurname,
+              email: signUpData.Email,
+            }),
+          },
+        );
 
-      let { message } = await response.json();
-      console.log(message);
-      navigate(-1);
-    }
-  }
-    catch (error){
-      console.error(error)
+        let { message } = await response.json();
+        console.log(message);
+        navigate(-1);
+      }
+    } catch (error) {
+      console.error("Sign up error",error);
     }
   }
 
   // SUPABASE FUNCTION USED TO LET A USER SIGN INTO THE APPLICATION
   async function signInWithEmail(event) {
-    event.preventDefault();
+    try {
+      event.preventDefault();
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: signInData.Email,
-      password: signInData.Password,
-    });
+      const { Email, Password } = signInData;
 
-    if (error) {
-      alert(error);
-      return alert(error);
+      if (!Email.trim() || !Password) {
+        setError("Please enter your email and password.");
+        return;
+      }
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: signInData.Email,
+        password: signInData.Password,
+      });
+
+      if (error) {
+        alert(error);
+        return alert(error);
+      }
+      console.log(data);
+      navigate(-1);
+    } catch (error) {
+      console.error("Login error:", err);
+
+      setError(err.message || "Unable to sign in. Please try again.");
     }
-    console.log(data);
-    navigate(-1);
   }
 
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem("user"));
-
-  //   if (user) {
-  //     navigate("/");
-  //   }
-  // }, [navigate]);
-
-
-
-  // CONTROLLING THE DISPLAY OF THE INPUT FIELDS ON THE SIGN IN PAGE 
+  // CONTROLLING THE DISPLAY OF THE INPUT FIELDS ON THE SIGN IN PAGE
   const handleSignUpChange = (event) => {
     const currentInput = event.target.className;
-    const currentInputId = event.target.id;
     const currentValue = event.target.value;
 
     setSignUpData((prev) => {
-      return ({ ...prev, [currentInput] : currentValue });
+      return { ...prev, [currentInput]: currentValue };
     });
 
     setError("");
   };
 
-
-
-  // CONTROLLING THE DISPLAY OF THE INPUT FIELDS ON THE SIGN IN PAGE 
+  // CONTROLLING THE DISPLAY OF THE INPUT FIELDS ON THE SIGN IN PAGE
   const handleSignInChange = (event) => {
     const currentInput = event.target.className;
     const currentValue = event.target.value;
 
     setSignInData((prev) => {
-      return ({ ...prev, [currentInput]: currentValue });
+      return { ...prev, [currentInput]: currentValue };
     });
 
     setError("");
   };
 
-
-  
   const switchMode = (signup) => {
     setIsSignUp(signup);
     setError("");
   };
 
-  const handleSignUp = async (e) => {
-
-    const { NameAndSurname, Email, Password } = signUpData;
-
-
-    setLoading(true);
-
-    try {
-      const res = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          NameAndSurname: NameAndSurname.trim(),
-          Email: Email.trim(),
-          Password,
-        }),
-      });
-
-      const data = await res.json().catch(() => null);
-
-      if (!res.ok) {
-        throw new Error(
-          data?.message || `Unable to create account (${res.status})`,
-        );
-      }
-
-      localStorage.setItem("user", JSON.stringify(data));
-
-      navigate("/home");
-    } catch (err) {
-      console.error("Signup error:", err);
-
-      setError(
-        err.message || "Something went wrong while creating your account.",
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
-
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    setError("");
-
-    const { Email, Password } = signInData;
-
-    if (!Email.trim() || !Password) {
-      setError("Please enter your email and password.");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const credentials = btoa(`${Email.trim()}:${Password}`);
-
-      const res = await fetch("http://localhost:3000/checkpassword", {
-        method: "GET",
-        headers: {
-          Authorization: `Basic ${credentials}`,
-        },
-      });
-
-      if (!res.ok) {
-        throw new Error("Invalid email or password.");
-      }
-
-      const data = await res.json();
-
-      localStorage.setItem("user", JSON.stringify(data));
-
-      navigate("/home");
-    } catch (err) {
-      console.error("Login error:", err);
-
-      setError(err.message || "Unable to sign in. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
+ 
   return (
     <div className="authWrapper">
       <div className={`authContainer ${isSignUp ? "rightPanelActive" : ""}`}>
@@ -417,7 +323,7 @@ const { NameAndSurname, Email, Password } = signUpData
             <button
               type="button"
               className="homeWhite"
-              onClick={() => navigate("/")}
+              onClick={() => navigate(-1)}
             >
               Home
             </button>
@@ -460,7 +366,7 @@ const { NameAndSurname, Email, Password } = signUpData
                 <button
                   type="button"
                   className="homeBlue"
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate(-1)}
                 >
                   Home
                 </button>
