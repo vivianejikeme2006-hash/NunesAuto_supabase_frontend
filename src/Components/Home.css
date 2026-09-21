@@ -3,6 +3,7 @@
   --na-navy: #1f2f52;
   --na-navy-ink: #16223b;
   --na-steel: #7f93b3;
+  --na-steelOpacity: rgba(15, 83, 192, 0.5);
   --na-steel-soft: #c7d1e2;
   --na-bg: #ffffff;
   --na-red: #c1272d;
@@ -182,6 +183,7 @@
   top: 4px;
   right: 4%;
   z-index: 2;
+  background-color: var(--na-steelOpacity);
 }
 
 .na-badge--clients {
@@ -253,7 +255,7 @@
 
 .na-brand-logo {
   height: 40px;
-  transform: scale(1.85);
+  transform: scale(2.5);
   width: auto;
   object-fit: contain;
   opacity: 0.85;

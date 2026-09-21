@@ -10,31 +10,30 @@ const Home = () => {
   const navigate = useNavigate();
 
   // 
-const [ allBrands, setAllBrands ] = useState([]);
+// const [ allBrands, setAllBrands ] = useState([]);
 
-useEffect( ()=>{
- const getAllBrands = async() =>{
-  try{
+// useEffect( ()=>{
+//  const getAllBrands = async() =>{
+//   try{
 
-  const response = await fetch(`${import.meta.env.VITE_RENDER_URL_BACKEND}/brands`,{
-    headers: { "Content-Type" : "application/json" }
-  });
+//   const response = await fetch(`${import.meta.env.VITE_RENDER_URL_BACKEND}/brands`,{
+//     headers: { "Content-Type" : "application/json" }
+//   });
 
-  const { message } = await response.json();
+//   const { message } = await response.json();
   
-  setAllBrands( ()=>{ return [ ...message ] })
-console.log("All of the brands: ",message)
+//   setAllBrands( ()=>{ return [ ...message ] })
+// console.log("All of the brands: ",message)
 
-  }
-catch (error){
-  console.error(error)
-}
- }
+//   }
+// catch (error){
+//   console.error(error)
+// }
+//  }
 
- getAllBrands()
-},[]) 
+//  getAllBrands()
+// },[]) 
 
-const HERO_CAR = "/assets/hero-car.png";
 
   return (
     <div className="na-page">
