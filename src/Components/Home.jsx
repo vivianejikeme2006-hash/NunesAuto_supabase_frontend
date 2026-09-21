@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/NavBar";
@@ -9,63 +9,36 @@ const Home = () => {
   // USING NAVIGATE TO NAVIGATE TO OTHER PAGES
   const navigate = useNavigate();
 
+  // 
+// const [ allBrands, setAllBrands ] = useState([]);
 
+// useEffect( ()=>{
+//  const getAllBrands = async() =>{
+//   try{
 
-// These point at your project's /public/assets folder (create it, or
-// change the paths below to wherever you keep images). Files placed in
-// /public are copied as-is and referenced by plain string paths, so
-// Vite won't error even before the files exist — you'll just see a
-// broken-image icon in the browser until you drop the real file in.
-//   - /public/assets/nunes-auto-logo.png   → the Nunes Auto shield logo
-//   - /public/assets/hero-car.png          → the hero/product car photo
-//   - /public/assets/brands/*.png          → each manufacturer's own logo
-//     (these are trademarked — use each brand's official asset, not a recreation)
-const LOGO = "/assets/nunes-auto-logo.png";
-const HERO_CAR = "/assets/hero-car.png";
+//   const response = await fetch(`${import.meta.env.VITE_RENDER_URL_BACKEND}/brands`,{
+//     headers: { "Content-Type" : "application/json" }
+//   });
 
-const NAV_LINKS = ["Home", "Products", "About Us"];
+//   const { message } = await response.json();
+  
+//   setAllBrands( ()=>{ return [ ...message ] })
+// console.log("All of the brands: ",message)
 
-const BRANDS = [
-  { name: "Porsche", logo: "/assets/brands/porsche.png" },
-  { name: "Bugatti", logo: "/assets/brands/bugatti.png" },
-  { name: "Ferrari", logo: "/assets/brands/ferrari.png" },
-  { name: "Lamborghini", logo: "/assets/brands/lamborghini.png" },
-  { name: "Aston Martin", logo: "/assets/brands/aston-martin.png" },
-  { name: "BMW M", logo: "/assets/brands/bmw-m.png" },
-];
+//   }
+// catch (error){
+//   console.error(error)
+// }
+//  }
+
+//  getAllBrands()
+// },[]) 
+
 
   return (
     <div className="na-page">
-      <header className="na-navbar">
-        <div className="na-brand">
-          <img src={LOGO} alt="Nunes Auto" className="na-brand-mark" />
-        </div>
-
-      <Navbar />
-
-        <div className="na-nav-icons">
-          <button className="na-icon-btn" aria-label="Cart">
-             <svg viewBox="0 0 24 24" width={20} height={20} fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" >
-    <circle cx="9" cy="21" r="1" />
-    <circle cx="20" cy="21" r="1" />
-    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-  </svg>
-          </button>
-          <button className="na-icon-btn na-icon-btn--filled" aria-label="Account" onClick={
-            ()=>{ return navigate("/login")} }>
-             <svg viewBox="0 0 24 24" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" >
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-    <circle cx="12" cy="7" r="4" />
-  </svg>
-          </button>
-          <button className="na-icon-btn" aria-label="Settings">
-             <svg viewBox="0 0 24 24" width={20} height={20} fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" >
-    <circle cx="12" cy="12" r="3" />
-    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-  </svg> 
-          </button>
-        </div>
-      </header>
+     
+     <Navbar />
 
       <section className="na-hero">
         <div className="na-hero-copy">
@@ -107,7 +80,7 @@ const BRANDS = [
           </h1>
 
           <div className="na-car-wrap">
-            <img src={HERO_CAR} alt="Featured Nunes Auto vehicle" className="na-car-img" />
+            <img src="./car.jpg" alt="Featured Nunes Auto vehicle" className="na-car-img" />
 
             <div className="na-badge na-badge--orders">
               <span className="na-badge-number">3,700</span>
@@ -130,14 +103,38 @@ const BRANDS = [
       </section>
 
       <section className="na-brands" aria-label="Brands we stock parts for">
-        {BRANDS.map((brand) => (
-          <img
-            key={brand.name}
-            src={brand.logo}
+        {/* {allBrands.map((brand) => (
+          <img key={brand.id}
+            src={brand.image}
             alt={brand.name}
             className="na-brand-logo"
           />
-        ))}
+        ))} */}
+           <img
+            src="./Porsche.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+            <img
+            src="./Ferrari.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+           <img
+            src="Lamborghini.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          />
+            <img
+            src="./AstonMartin.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+            <img
+            src="./BWM.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          />  
       </section>
     </div>
   );

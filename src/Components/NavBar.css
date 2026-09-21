@@ -1,3 +1,11 @@
+.na-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 48px;
+}
+
 .navBar {
   display: flex;
   align-items: center;
