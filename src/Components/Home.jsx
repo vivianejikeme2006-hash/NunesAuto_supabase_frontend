@@ -96,7 +96,7 @@ const Home = () => {
           </div>
           <span className="na-dot" aria-hidden="true" />
 
-          <button type="button" className="na-cta">
+          <button type="button" className="na-cta" onClick={ ()=>{ return navigate("/Products")}}>
             Get started
           </button>
         </div>
