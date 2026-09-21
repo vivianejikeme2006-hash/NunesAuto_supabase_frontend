@@ -11,26 +11,16 @@ function NavBar() {
   };
 
   return (
-    <nav className="navBar">
-      <Link to="/" className="navLogo">NunesAuto</Link>
+    <nav className="pp-nav-links">
+      {/* <Link to="/" className="navLogo">NunesAuto</Link> */}
 
-      <div className="navLinks">
+      {/* <div className="navLinks"> */}
         <Link to="/" className="navLink">Home</Link>
         <Link to="/Products" className="navLink">Products</Link>
         <Link to="/About" className="navLink">About Us</Link>
-      </div>
+      {/* </div> */}
 
-      <div className="navIcons">
-        {user ? (
-          <button className="navIconButton" onClick={handleLogout}>Log Out</button>
-        ) : (
-          <>
-            <Link to="/login" className="navIconButton">Log In</Link>
-            {/* <Link to="/signup" className="navIconButtonPrimary">Sign Up</Link> */}
-          </>
-        )}
-      </div>
-    </nav>
+     </nav>
   );
 }
 

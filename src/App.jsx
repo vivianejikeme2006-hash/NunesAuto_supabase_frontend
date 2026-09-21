@@ -32,7 +32,6 @@ function App() {
           {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="/Products" element={ <Products />} />
           {/* <Route path="/About" element={ <About />} /> */}
-          <Route path="/Products" element={ <Products />} />
         </Routes>
       </div>
     </Router>
