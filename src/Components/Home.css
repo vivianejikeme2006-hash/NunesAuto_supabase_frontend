@@ -20,6 +20,7 @@
   color: var(--na-text);
   font-family: "Inter", system-ui, sans-serif;
   overflow-x: hidden;
+  height: 100dvh;
 }
 
 /* ---------- Navbar ---------- */
@@ -83,11 +84,12 @@
 .na-hero {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1.4fr 0.6fr;
+  grid-template-columns: 0.5fr 1.4fr 0.6fr;
   align-items: center;
-  gap: 16px;
-  padding: 24px 48px 64px;
-  min-height: 480px;
+  /* gap: 16px; */
+  padding: 24px 48px 0px;
+  /* min-height: 480px; */
+  height:68%;
 }
 
 .na-hero-copy {
@@ -149,21 +151,28 @@
   text-align: center;
 }
 
+/* CONTAINER THAT HOLDS THE MAIN IMAGE ON THE PRODUCTS PAGE */
 .na-car-wrap {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   /* border: 2px solid red; */
+  overflow-y: hidden;
 }
+
+/* STYLING FOR THE MAIN IMAGE ON THE PRODUCTS PAGE */
 
 .na-car-img {
   width: 100%;
   max-width: 420px;
-  height: auto;
+  /* height: auto; */
   display: block;
   object-fit: contain;
   z-index: 1;
+  border: 2px dashed navy;
+  height: 50dvh;
+  transform: scale(2);
 }
 
 /* ---------- Stat badges ---------- */
@@ -215,7 +224,7 @@
   position: relative; 
 }
 
-.na-dot {
+/* .na-dot {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -223,9 +232,7 @@
   position: absolute;
   right: 115px;
   bottom: 50px;
-  /* align-self: flex-end; */
-  /* margin-top: -14px; */
-}
+} */
 
 .na-cta {
   background: var(--na-navy);
@@ -251,6 +258,7 @@
   gap: 32px;
   padding: 32px 48px 56px;
   border-top: 1px solid #eef0f4;
+  /* border-top: 2px dashed green; */
 }
 
 .na-brand-logo {
@@ -267,7 +275,7 @@
   .na-hero {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 24px 24px 48px;
+    /* padding: 24px 24px 48px; */
   }
 
   .na-hero-copy,
