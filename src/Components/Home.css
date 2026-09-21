@@ -1,150 +1,284 @@
-.homePage {
-  background-color: #1e1e1e;
-  min-height: 100vh;
-  color: #ffffff;
+
+:root {
+  --na-navy: #1f2f52;
+  --na-navy-ink: #16223b;
+  --na-steel: #7f93b3;
+  --na-steel-soft: #c7d1e2;
+  --na-bg: #ffffff;
+  --na-red: #c1272d;
+  --na-text: #24304a;
+  --na-text-muted: #5b6478;
 }
 
-.hero {
+* {
+  box-sizing: border-box;
+}
+
+.na-page {
+  background: var(--na-bg);
+  color: var(--na-text);
+  font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ---------- Navbar ---------- */
+
+.na-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 24px;
+  padding: 20px 48px;
 }
 
-.heroText {
-  flex: 1;
-  min-width: 300px;
+.na-brand-mark {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
-.searchBar {
+.na-nav-links {
   display: flex;
-  margin-bottom: 40px;
-  border-radius: 8px;
-  overflow: hidden;
-  max-width: 600px;
+  gap: 32px;
 }
 
-.searchField {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  padding: 14px 20px;
-  flex: 1;
-  border-right: 1px solid #3a3a3a;
-  font-size: 14px;
-  cursor: pointer;
+.na-nav-links a {
+  color: var(--na-navy);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
 }
 
-.searchButton {
-  background-color: #2f6fed;
-  color: #ffffff;
+.na-nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.na-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
   border: none;
-  padding: 14px 24px;
-  font-weight: 700;
-  cursor: pointer;
-  flex: 1.2;
-}
-
-.searchButton:hover {
-  background-color: #2559c7;
-}
-
-.heroText h1 {
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.heroText h1 span {
-  color: #2f6fed;
-}
-
-.heroText p {
-  color: #cccccc;
-  margin: 16px 0 24px;
-  max-width: 420px;
-}
-
-.heroButton {
-  background-color: #2f6fed;
-  color: #ffffff;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 700;
+  background: transparent;
+  color: var(--na-navy);
   cursor: pointer;
 }
 
-.heroButton:hover {
-  background-color: #2559c7;
+.na-icon-btn--filled {
+  background: var(--na-navy);
+  color: #fff;
 }
 
-.heroImage {
-  /* flex: 1; */
-  /* min-width: 300px; */
-  /* display: flex; */
-  /* justify-content: center; */
-  width: 380px;
-  height: 350px;
-  border-radius: 8px;
-  /* border: 2px solid red; */
-  overflow-y:hidden ;
+/* ---------- Hero ---------- */
+
+.na-hero {
   position: relative;
-  margin-right: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 0.6fr;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 48px 64px;
+  min-height: 480px;
 }
 
-.heroImage img {
-  width: 100%;
-  height: 140%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -20%;
-bottom: -20%;
+.na-hero-copy {
+  max-width: 300px;
 }
 
-.categories {
-  background-color: #2f6fed;
-  padding: 30px 60px 50px;
-}
- 
-.categories h2 {
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.categoriesSubtext {
-  color: #dbe6ff;
-  margin-bottom: 24px;
+.na-hero-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.15;
+  color: var(--na-navy-ink);
+  margin: 0 0 16px;
 }
 
-.categoryGrid {
+.na-hero-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--na-text-muted);
+  margin: 0 0 18px;
+  max-width: 230px;
+}
+
+.na-social-icons {
   display: flex;
-  /* gap: 20px; */
-  flex-wrap: wrap;
-  justify-content: space-around;
+  gap: 10px;
 }
 
-.categoryCard {
-  background-color: #1e1e1e;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 20%;
-  height:200px;
-  min-width: 160px;
+.na-social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid var(--na-steel-soft);
+  color: var(--na-navy);
+}
+
+/* ---------- Hero visual (wordmark + car) ---------- */
+
+.na-hero-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.na-wordmark {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  letter-spacing: 0.14em;
+  color: var(--na-navy-ink);
+  margin: 0 0 -1.4rem;
+  z-index: 1;
   text-align: center;
 }
 
-.categoryCard img {
+.na-car-wrap {
+  position: relative;
   width: 100%;
-  height: 80%;
-  object-fit: cover;
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
-.categoryCard span {
+.na-car-img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
   display: block;
-  padding: 14px;
+  object-fit: contain;
+}
+
+/* ---------- Stat badges ---------- */
+
+.na-badge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--na-steel);
+  color: #fff;
+  padding: 14px 18px;
+  width: 130px;
+}
+
+.na-badge--orders {
+  position: absolute;
+  top: 4px;
+  right: 4%;
+}
+
+.na-badge--clients {
+  width: 150px;
+  padding: 20px 20px;
+}
+
+.na-badge-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
   font-weight: 600;
+  line-height: 1;
+}
+
+.na-badge-label {
+  font-size: 0.72rem;
+  margin-top: 6px;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+.na-hero-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.na-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--na-red);
+  align-self: flex-end;
+  margin-top: -14px;
+}
+
+.na-cta {
+  background: var(--na-navy);
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.na-cta:hover {
+  background: var(--na-navy-ink);
+}
+
+/* ---------- Brand strip ---------- */
+
+.na-brands {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 32px 48px 56px;
+  border-top: 1px solid #eef0f4;
+}
+
+.na-brand-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+  .na-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 24px 24px 48px;
+  }
+
+  .na-hero-copy,
+  .na-hero-side {
+    max-width: none;
+    align-items: center;
+  }
+
+  .na-badge--orders {
+    position: static;
+    margin-top: 16px;
+  }
+
+  .na-navbar {
+    flex-wrap: wrap;
+    padding: 16px 24px;
+  }
+
+  .na-brands {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .na-cta {
+    transition: none;
+  }
 }
