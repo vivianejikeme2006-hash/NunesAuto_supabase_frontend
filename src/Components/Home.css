@@ -23,18 +23,21 @@
 
 /* ---------- Navbar ---------- */
 
-.na-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 20px 48px;
+
+
+.na-brand{
+ height: 50px;
+  width: 100px;
+  display: block;
+  overflow: hidden;
 }
 
 .na-brand-mark {
-  height: 44px;
+  height: 100%;
   width: auto;
   display: block;
+  transform: scaleX(1.5);
+
 }
 
 .na-nav-links {
@@ -88,12 +91,13 @@
 
 .na-hero-copy {
   max-width: 300px;
+  /* border: 2px dashed green; */
 }
 
 .na-hero-heading {
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 1.15;
   color: var(--na-navy-ink);
   margin: 0 0 16px;
@@ -149,6 +153,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  /* border: 2px solid red; */
 }
 
 .na-car-img {
@@ -157,6 +162,7 @@
   height: auto;
   display: block;
   object-fit: contain;
+  z-index: 1;
 }
 
 /* ---------- Stat badges ---------- */
@@ -175,6 +181,7 @@
   position: absolute;
   top: 4px;
   right: 4%;
+  z-index: 2;
 }
 
 .na-badge--clients {
@@ -187,6 +194,7 @@
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
+  overflow-y: hidden;
 }
 
 .na-badge-label {
@@ -194,6 +202,7 @@
   margin-top: 6px;
   line-height: 1.3;
   opacity: 0.9;
+  overflow-y: hidden;
 }
 
 .na-hero-side {
@@ -201,15 +210,19 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
+  position: relative; 
 }
 
 .na-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--na-red);
-  align-self: flex-end;
-  margin-top: -14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--na-navy);
+  position: absolute;
+  right: 115px;
+  bottom: 50px;
+  /* align-self: flex-end; */
+  /* margin-top: -14px; */
 }
 
 .na-cta {
@@ -240,6 +253,7 @@
 
 .na-brand-logo {
   height: 40px;
+  transform: scale(1.85);
   width: auto;
   object-fit: contain;
   opacity: 0.85;
