@@ -1,5 +1,13 @@
 import React from "react";
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
+
+
+const Home = () => {
+
+  // USING NAVIGATE TO NAVIGATE TO OTHER PAGES
+  const navigate = useNavigate();
+
 
 // Small inline SVG icons — no external icon package needed.
 const ShoppingCart = (props) => (
@@ -67,7 +75,6 @@ const BRANDS = [
   { name: "BMW M", logo: "/assets/brands/bmw-m.png" },
 ];
 
-export default function Home() {
   return (
     <div className="na-page">
       <header className="na-navbar">
@@ -90,7 +97,8 @@ export default function Home() {
           <button className="na-icon-btn" aria-label="Cart">
             <ShoppingCart />
           </button>
-          <button className="na-icon-btn na-icon-btn--filled" aria-label="Account">
+          <button className="na-icon-btn na-icon-btn--filled" aria-label="Account" onClick={
+            ()=>{ return navigate("/login")} }>
             <User />
           </button>
           <button className="na-icon-btn" aria-label="Settings">
@@ -166,3 +174,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

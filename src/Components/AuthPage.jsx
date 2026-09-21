@@ -323,7 +323,7 @@ function AuthPage({ initialMode = "login" }) {
             <button
               type="button"
               className="homeWhite"
-              onClick={() => navigate("/")}
+              onClick={() => navigate(-1)}
             >
               Home
             </button>
@@ -366,7 +366,7 @@ function AuthPage({ initialMode = "login" }) {
                 <button
                   type="button"
                   className="homeBlue"
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate(-1)}
                 >
                   Home
                 </button>
