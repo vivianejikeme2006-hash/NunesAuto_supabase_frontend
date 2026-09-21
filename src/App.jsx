@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AuthPage from "./Components/AuthPage"
 import Home from "./Components/Home"
 import Products from "./Components/Products"
+import AboutUs from "./Components/AboutUs"
+
+
 
 function ProtectedRoute({ children }) {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -31,7 +34,7 @@ function App() {
           />
           {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="/Products" element={ <Products />} />
-          {/* <Route path="/About" element={ <About />} /> */}
+          <Route path="/About" element={ <AboutUs />} />
         </Routes>
       </div>
     </Router>
