@@ -11,12 +11,14 @@ function AuthPage({ initialMode = "login" }) {
     NameAndSurname: "",
     Email: "",
     Password: "",
+    PasswordType: "password",
   });
 
   // USESTATE THAT STORES THE DATA OF A USER THAT IS SIGNING UP
   const [signInData, setSignInData] = useState({
     Email: "",
     Password: "",
+    PasswordType: "password",
   });
 
   // USED TO DISPLAY ERROR MESSAGES IF THE USER SIGNS IN WITH THE WRONG CREDENTIALS OR WRONG REQUIRMENTS
@@ -85,7 +87,7 @@ function AuthPage({ initialMode = "login" }) {
         navigate(-1);
       }
     } catch (error) {
-      console.error("Sign up error",error);
+      console.error("Sign up error", error);
     }
   }
 
@@ -148,7 +150,33 @@ function AuthPage({ initialMode = "login" }) {
     setError("");
   };
 
- 
+  // HANDLES THE DISPLAY OF A USERS PASSWORD
+  const passwordDisplay = (event) => {
+    // console.log("passwordDisplay was called")
+    const passwordInput = event.target.parentElement.children[1];
+
+    // console.log("passwordDisplay was passwordInput: ",passwordInput)
+    const displayType = event.target.parentElement.children[1].id;
+
+    if (displayType === "signin-password") {
+      setSignInData((prev) => {
+        return {
+          ...prev,
+          PasswordType:
+            signInData.PasswordType === "password" ? "text" : "password",
+        };
+      });
+    } else {
+      setSignUpData((prev) => {
+        return {
+          ...prev,
+          PasswordType:
+            signUpData.PasswordType === "password" ? "text" : "password",
+        };
+      });
+    }
+  };
+
   return (
     <div className="authWrapper">
       <div className={`authContainer ${isSignUp ? "rightPanelActive" : ""}`}>
@@ -208,7 +236,7 @@ function AuthPage({ initialMode = "login" }) {
 
               <input
                 id="signup-password"
-                type="password"
+                type={signUpData.PasswordType}
                 name="Password"
                 className="Password"
                 placeholder="Create a password"
@@ -216,6 +244,20 @@ function AuthPage({ initialMode = "login" }) {
                 onChange={handleSignUpChange}
                 disabled={loading}
               />
+
+              <svg
+                onClick={passwordDisplay}
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+              >
+                <path d="M0 0h16v16H0z" fill="none" />
+                <g fill="currentColor">
+                  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                  <path d="M8 5.5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0a3.5 3.5 0 0 1-7 0" />
+                </g>
+              </svg>
             </div>
 
             {isSignUp && error && (
@@ -278,7 +320,7 @@ function AuthPage({ initialMode = "login" }) {
 
               <input
                 id="signin-password"
-                type="password"
+                type={signInData.PasswordType}
                 name="Password"
                 className="Password"
                 placeholder="Enter your password"
@@ -287,6 +329,20 @@ function AuthPage({ initialMode = "login" }) {
                 // autoComplete="current-password"
                 disabled={loading}
               />
+
+              <svg
+                onClick={passwordDisplay}
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+              >
+                <path d="M0 0h16v16H0z" fill="none" />
+                <g fill="currentColor">
+                  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                  <path d="M8 5.5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0a3.5 3.5 0 0 1-7 0" />
+                </g>
+              </svg>
             </div>
 
             <div className="forgotPassword">
@@ -325,7 +381,19 @@ function AuthPage({ initialMode = "login" }) {
               className="homeWhite"
               onClick={() => navigate(-1)}
             >
-              Home
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  fill="currentColor"
+                  d="M21 11H6.414l5.293-5.293l-1.414-1.414L2.586 12l7.707 7.707l1.414-1.414L6.414 13H21z"
+                />
+              </svg>{" "}
+              <span>Back</span>
             </button>
           </form>
         </div>
@@ -368,7 +436,19 @@ function AuthPage({ initialMode = "login" }) {
                   className="homeBlue"
                   onClick={() => navigate(-1)}
                 >
-                  Home
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      fill="currentColor"
+                      d="M21 11H6.414l5.293-5.293l-1.414-1.414L2.586 12l7.707 7.707l1.414-1.414L6.414 13H21z"
+                    />
+                  </svg>{" "}
+                  <span>Back</span>
                 </button>
               </div>
             </div>

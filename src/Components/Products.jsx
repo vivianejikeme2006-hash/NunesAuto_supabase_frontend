@@ -42,28 +42,9 @@ useEffect( ()=>{
 
 },[])
 
-
-
-// --- Content -----------------------------------------------------------
-// Swap these placeholder paths for real images once you have them.
-// Anything under /public is referenced as a plain string path, so the
-// app still builds and runs even before the files exist — you'll just
-// see a broken-image icon until you drop the real file in.
-
-const LOGO = "/assets/nunes-auto-logo.png";
-const HERO_WHEEL = "/assets/products/hero-wheel.png";
-
-const CATEGORIES = [
-  { name: "Tyres", image: "/assets/products/category-tyres.png" },
-  { name: "Suspensions", image: "/assets/products/category-suspensions.png" },
-  { name: "Engines", image: "/assets/products/category-engines.png" },
-];
-
 function formatPrice(amount) {
   return `R ${amount.toFixed(2)}`;
 }
-
-
 
   return (
     <div className="pp-page">
@@ -79,22 +60,38 @@ function formatPrice(amount) {
             19&quot; Rims
           </p>
         </div>
-        <img src={HERO_WHEEL} alt="Ultra Wheel 19 inch rim" className="pp-hero-img" />
+        <img src="./productPageBannerWheel.png" alt="Ultra Wheel 19 inch rim" className="pp-hero-img" />
       </section>
 
 
 
 {/* SECTION USEDTO DISPLAY THE PRODUCTS THAT YOU WANT TO FILTER OUT */}
       <section className="pp-categories" aria-label="Shop by category">
-        {CATEGORIES.map((category) => (
-          <a key={category.name} href={`/products/${category.name.toLowerCase()}`} className="pp-category-card">
-            <img src={category.image} alt={category.name} className="pp-category-img" />
+        
+          <section className="pp-category-card">
+            <img src="./productPageBannerWheel.png" alt="Tyres" className="pp-category-img" />
             <div className="pp-category-overlay">
-              <span className="pp-category-name">{category.name}</span>
+              <span className="pp-category-name">Tyres</span>
               <span className="pp-category-shop">Shop now</span>
             </div>
-          </a>
-        ))}
+          </section>
+
+            <section className="pp-category-card">
+            <img src="./productPageSuspension.jpeg" alt="Suspensions" className="pp-category-img" />
+            <div className="pp-category-overlay">
+              <span className="pp-category-name">Suspensions</span>
+              <span className="pp-category-shop">Shop now</span>
+            </div>
+          </section>
+
+          <section className="pp-category-card">
+            <img src="./productPageEngine.jpeg" alt="Engine" className="pp-category-img" />
+            <div className="pp-category-overlay">
+              <span className="pp-category-name">Engines</span>
+              <span className="pp-category-shop">Shop now</span>
+            </div>
+          </section>
+       
       </section>
 
 
