@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/NavBar"
-
+import { createClient } from "@supabase/supabase-js";
 
 const Products = () => {
 
@@ -12,8 +12,13 @@ const Products = () => {
 //  STATE VARIABLE TGHAT IS USED TO STORE THE PRODUCTS COLLECTED FROM THE DATABASE
 const [ allParts,setAllParts] = useState([]);
 
-//  USEEFFECT THAT WILL COLLECT ALL OF THE PRODUCTS FROM THE PRODUCTS COLLECTION
+// CONNECTION TO SUPABASE 
+    const supabase = createClient(
+import.meta.env.VITE_PUBLIC_SUPABASE_URL,
+import.meta.env.VITE_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+);
 
+//  USEEFFECT THAT WILL COLLECT ALL OF THE PRODUCTS FROM THE PRODUCTS COLLECTION
 useEffect( ()=>{
 
   const getAllParts = async() =>{
@@ -42,9 +47,46 @@ useEffect( ()=>{
 
 },[])
 
-function formatPrice(amount) {
-  return `R ${amount.toFixed(2)}`;
+const addToCart = async(selectedItem)=>{
+  try{
+
+    // GETTING THE ACCESS TOKEN 
+    const { data, error } = await supabase.auth.getSession();
+
+    if ( error ){
+      console.error(error);
+      alert("Login to add the item to your cart.");
+    }
+
+console.log("Item to add to cart: ",selectedItem)
+   console.log("Users access token", data);
+
+    const response = await fetch(`${import.meta.env.VITE_RENDER_URL_BACKEND}/addToCart`,{
+      method : "POST",
+      headers: {
+        "Content-Type":"application/json",
+        "authorization": `Bearer ${data.session.access_token}`
+      },
+      body: JSON.stringify({
+product_id: selectedItem.id,
+cart_item: selectedItem,
+quantity: 1
+      })
+
+    });
+
+    if( response.status !== 200 ){
+      alert("Login to add the item to your cart.");
+    }
+
+   const dataResponse = await response.json();
+    console.log("Response from product added to the cart: ",dataResponse);
+
+  } catch (error){
+    console.error("Error trying to add a product to a cart: ",error)
+  }
 }
+
 
   return (
     <div className="pp-page">
@@ -107,8 +149,8 @@ function formatPrice(amount) {
               <p className="pp-product-name">{product.brand}</p>
               <p className="pp-product-name">{product.name}</p>
               <div className="pp-product-footer">
-                <span className="pp-product-price">{formatPrice(product.price)}</span>
-                <button type="button" className="pp-add-cart">
+                <span className="pp-product-price">{product.price}</span>
+                <button type="button" className="pp-add-cart" onClick={ ()=>{ return addToCart(product) } }>
                   Add Cart 
                 </button>
               </div>
