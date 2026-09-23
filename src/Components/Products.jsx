@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Products.css";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Components/NavBar"
-import { createClient } from "@supabase/supabase-js";
+import Navbar from "../Components/NavBar";
+import { supabase } from "./SupabaseConnection";
 
 const Products = () => {
 
@@ -12,11 +12,7 @@ const Products = () => {
 //  STATE VARIABLE TGHAT IS USED TO STORE THE PRODUCTS COLLECTED FROM THE DATABASE
 const [ allParts,setAllParts] = useState([]);
 
-// CONNECTION TO SUPABASE 
-    const supabase = createClient(
-import.meta.env.VITE_PUBLIC_SUPABASE_URL,
-import.meta.env.VITE_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-);
+
 
 //  USEEFFECT THAT WILL COLLECT ALL OF THE PRODUCTS FROM THE PRODUCTS COLLECTION
 useEffect( ()=>{

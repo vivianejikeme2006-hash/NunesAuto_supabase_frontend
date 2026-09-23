@@ -84,6 +84,7 @@ function AuthPage({ initialMode = "login" }) {
 
         let { message } = await response.json();
         console.log(message);
+        sessionStorage.setItem("authenticated",JSON.parse(true));
         navigate(-1);
       }
     } catch (error) {
@@ -113,6 +114,7 @@ function AuthPage({ initialMode = "login" }) {
         return alert(error);
       }
       console.log(data);
+        sessionStorage.setItem("authenticated",JSON.parse(true));
       navigate(-1);
     } catch (error) {
       console.error("Login error:", err);

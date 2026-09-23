@@ -1,5 +1,6 @@
 import React from "react";
 import "./AboutUs.css";
+import NavBar from "./NavBar";
 
 // Small inline SVG icons — no external icon package needed.
 const ShoppingCart = (props) => (
@@ -73,35 +74,8 @@ const VALUES = [
 export default function AboutUs() {
   return (
     <div className="au-page">
-      <header className="au-navbar">
-        <div className="au-brand">
-          <img src={LOGO} alt="Nunes Auto" className="au-brand-mark" />
-        </div>
-
-        <nav className="au-nav-links" aria-label="Primary">
-          {NAV_LINKS.map((label) => (
-            <a
-              key={label}
-              href={label === "Home" ? "/" : `/${label.toLowerCase().replace(" ", "-")}`}
-              className={label === "About Us" ? "au-nav-active" : undefined}
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="au-nav-icons">
-          <button className="au-icon-btn" aria-label="Cart">
-            <ShoppingCart />
-          </button>
-          <button className="au-icon-btn au-icon-btn--filled" aria-label="Account">
-            <User />
-          </button>
-          <button className="au-icon-btn" aria-label="Settings">
-            <Settings />
-          </button>
-        </div>
-      </header>
+      
+      <NavBar />
 
       <section
         className="au-hero"
