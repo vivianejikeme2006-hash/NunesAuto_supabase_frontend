@@ -163,7 +163,7 @@ export default function AboutUs() {
 
       <footer className="au-footer">
         <div className="au-footer-col">
-          <img src={LOGO} alt="Nunes Auto" className="au-footer-logo" />
+          <img src="./NunesAutoLogo.jpeg" alt="Nunes Auto" className="au-footer-logo" />
           <h3 className="au-footer-heading">NunesAuto</h3>
           <p className="au-footer-text">
             Your one-stop shop for affordable and reliable car parts
