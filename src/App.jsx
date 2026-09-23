@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AuthPage from "./Components/AuthPage"
 import Home from "./Components/Home"
 import Products from "./Components/Products"
-import AboutUs from "./Components/AboutUs"
+// import AboutUs from "./Components/AboutUs"
+import ProductCheckout from "./Components/ProductCheckout"
 
 
 
@@ -34,7 +35,8 @@ function App() {
           />
           {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="/Products" element={ <Products />} />
-          <Route path="/About" element={ <AboutUs />} />
+          {/* <Route path="/About" element={ <AboutUs />} /> */}
+          <Route path="/checkout" element={<ProductCheckout />} />
         </Routes>
       </div>
     </Router>

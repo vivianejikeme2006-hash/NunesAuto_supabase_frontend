@@ -13,29 +13,32 @@ function NavBar() {
   return (
     <header className="na-navbar">
       <div className="na-brand">
-        <img src="./NunesAutoLogo.jpeg" alt="Nunes Auto" className="na-brand-mark" />
+        <img
+          src="./NunesAutoLogo.jpeg"
+          alt="Nunes Auto"
+          className="na-brand-mark"
+        />
       </div>
 
       {/* NAVBAR SECTION  */}
 
       <nav className="pp-nav-links">
-
         <div className="navLinks">
-        <Link to="/" className="navLink">
-          Home
-        </Link>
-        <Link to="/Products" className="navLink">
-          Products
-        </Link>
-        <Link to="/About" className="navLink">
-          About Us
-        </Link>
+          <Link to="/" className="navLink">
+            Home
+          </Link>
+          <Link to="/Products" className="navLink">
+            Products
+          </Link>
+          <Link to="/About" className="navLink">
+            About Us
+          </Link>
         </div>
       </nav>
 
       {/* ICONS NAVBAR SECTION */}
       <div className="na-nav-icons">
-        <Link className="na-icon-btn" aria-label="Cart">
+        <Link className="na-icon-btn" aria-label="Cart" to="/checkout">
           <svg
             viewBox="0 0 24 24"
             width={20}
