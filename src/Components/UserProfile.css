@@ -2,11 +2,7 @@
    AUTH PAGE
  */
 
-* {
-  box-sizing: border-box;
-}
-
-.authWrapper {
+.userProfile-Wrapper {
   min-height: 100dvh;
   width: 100%;
   /* display: flex; */
@@ -21,7 +17,7 @@
    MAIN CONTAINER
  */
 
-.authContainer {
+.userProfile-Container {
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -36,7 +32,7 @@
    FORMS
  */
 
-.formContainerAuth {
+.userProfile-formContainer {
   position: absolute;
   top: 0;
   height: 100%;
@@ -60,26 +56,26 @@
    SIGN IN
  */
 
-.signInContainer {
+/* .signInContainer {
   left: 0;
   z-index: 2;
-}
+} */
 
-.authContainer.rightPanelActive .signInContainer {
+/* .userProfile-Container.rightPanelActive .signInContainer {
   transform: translateX(100%);
-}
+} */
 
 /*  
    SIGN UP
  */
 
-.signUpContainer {
+.userProfile-signUpContainer {
   left: 0;
-  opacity: 0;
+  /* opacity: 0; */
   z-index: 1;
 }
 
-.authContainer.rightPanelActive .signUpContainer {
+.userProfile-Container.rightPanelActive .signUpContainer {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
@@ -89,7 +85,7 @@
    LOGO
  */
 
-.authLogo {
+.userProfile-Logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,14 +93,14 @@
   margin-bottom: 18px;
 }
 
-.authLogo span {
+.userProfile-Logo span {
   font-size: 25px;
   font-weight: 800;
   letter-spacing: 3px;
   color: #111;
 }
 
-.authLogo small {
+.userProfile-Logo small {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -116,7 +112,7 @@
    HEADINGS
  */
 
-.formContainerAuth h1 {
+.userProfile-formContainer h1 {
   margin: 0;
   text-align: center;
   font-size: 32px;
@@ -124,33 +120,26 @@
   color: #111;
 }
 
-.authSubtitle {
-  text-align: center;
-  color: #777;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 10px 0 28px;
-}
-
 /*  
    INPUT GROUP
  */
 
-.inputGroup {
+.userProfile-inputGroup {
   display: flex;
   flex-direction: column;
+  margin-top: 7px;
   margin-bottom: 17px;
   position: relative;
 }
 
-.inputGroup label {
+.userProfile-inputGroup label {
   font-size: 13px;
   font-weight: 600;
   color: #333;
   margin-bottom: 7px;
 }
 
-.inputGroup input {
+.userProfile-inputGroup input {
   width: 100%;
   height: 48px;
   padding: 0 15px;
@@ -160,27 +149,26 @@
   color: #222;
   font-size: 14px;
   outline: none;
-  transition: 0.25s ease;
 }
 
-.inputGroup input::placeholder {
+.userProfile-inputGroup input::placeholder {
   color: #999;
 }
 
-.inputGroup input:focus {
+.userProfile-inputGroup input:focus {
   border-color: #2463d4;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(36, 99, 212, 0.1);
 }
 
-.inputGroup input:disabled {
+.userProfile-inputGroup input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
 /* SHOW PASSWORD / HIDE PASSWORD SVG */
 
-.inputGroup svg{
+.userProfile-inputGroup svg {
   position: absolute;
   bottom: 15px;
   right: 20px;
@@ -188,17 +176,16 @@
   height: 20px;
 }
 
-.inputGroup svg:hover{
+.userProfile-inputGroup svg:hover {
   transform: scale(1.1);
   transition-duration: 0.3s;
 }
-
 
 /*  
    FORGOT PASSWORD
  */
 
-.forgotPassword {
+.userProfile-forgotPassword {
   display: flex;
   justify-content: flex-end;
   margin-top: -5px;
@@ -209,7 +196,7 @@
    BUTTON
  */
 
-.authButton {
+.userProfile-Button {
   width: 100%;
   height: 48px;
   border: none;
@@ -222,16 +209,16 @@
   transition: 0.25s ease;
 }
 
-.authButton:hover {
+.userProfile-Button:hover {
   background: #174fae;
   transform: translateY(-1px);
 }
 
-.authButton:active {
+.userProfile-Button:active {
   transform: translateY(0);
 }
 
-.authButton:disabled {
+.userProfile-Button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
   transform: none;
@@ -322,7 +309,7 @@
    OVERLAY
  */
 
-.overlayContainer {
+.userProfile-overlayContainer {
   position: absolute;
   top: 0;
   left: 50%;
@@ -330,23 +317,20 @@
   height: 100%;
   overflow: hidden;
   z-index: 10;
-  transition: transform 0.6s ease-in-out;
 }
 
-.authContainer.rightPanelActive .overlayContainer {
+/* .userProfile-Container.rightPanelActive .overlayContainer {
   transform: translateX(-100%);
-}
+} */
 
-.overlay {
+.userProfile-overlay {
   position: relative;
-  left: -100%;
-  width: 200%;
+  width: 100%;
   height: 100%;
   display: flex;
-  transition: transform 0.6s ease-in-out;
 }
 
-.authContainer.rightPanelActive .overlay {
+.userProfile-Container.rightPanelActive .userProfile-overlay {
   transform: translateX(50%);
 }
 
@@ -354,30 +338,31 @@
    OVERLAY PANELS
  */
 
-.overlayPanel {
-  position: relative;
-  width: 50%;
+.userProfile-overlayPanel {
+  /* position: relative; */
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   color: white;
+  z-index: 4;
 }
 
-.overlayLeft {
+/* .userProfile-overlayLeft {
   transform: translateX(-20%);
-}
+} */
 
-.authContainer.rightPanelActive .overlayLeft {
+.userProfile-Container.userProfile-rightPanelActive .userProfile-overlayLeft {
   transform: translateX(0);
 }
 
-.overlayRight {
-  transform: translateX(0);
+.userProfile-overlayRight {
+  transform: translateX(100);
 }
 
-.authContainer.rightPanelActive .overlayRight {
+.userProfile-Container.rightPanelActive .userProfile-overlayRight {
   transform: translateX(20%);
 }
 
@@ -385,7 +370,7 @@
    OVERLAY IMAGE
  */
 
-.overlayImage {
+.userProfile-overlayImage {
   border: 2px solid red !important;
   position: absolute;
   inset: 0;
@@ -395,7 +380,7 @@
   z-index: 0;
 }
 
-.imageOverlay {
+.userProfile-imageOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -410,7 +395,7 @@
    OVERLAY CONTENT
  */
 
-.overlayContent {
+.userProfile-overlayContent {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -418,25 +403,25 @@
   text-align: center;
 }
 
-.overlayBrand {
+.userProfile-overlayBrand {
   font-size: 17px;
   font-weight: 800;
   letter-spacing: 3px;
   margin-bottom: 45px;
 }
 
-.overlayBrand span {
+.userProfile-overlayBrand span {
   font-size: 10px;
   letter-spacing: 2px;
   opacity: 0.8;
 }
 
-.overlayContent h1 {
+.userProfile-overlayContent h1 {
   font-size: 34px;
   margin: 0 0 15px;
 }
 
-.overlayContent p {
+.userProfile-overlayContent p {
   font-size: 14px;
   line-height: 1.7;
   margin: 0 auto 30px;
@@ -447,7 +432,7 @@
    GHOST BUTTON
  */
 
-.ghostButton {
+.userProfile-ghostButton {
   min-width: 150px;
   height: 46px;
   padding: 0 25px;
@@ -461,42 +446,12 @@
   transition: 0.25s ease;
 }
 
-.ghostButton:hover {
+.userProfile-ghostButton:hover {
   background: white;
   color: #2463d4;
 }
 
-.homeBlue {
-  min-width: 50px;
-  height: 46px;
-  padding: 0 25px;
-  border-style: hidden;
-  /* border-bottom: 2px solid white; */
-  border: 2px solid rgb(255, 255, 255, 0.5);
-  border-radius: 25px;
-  background: transparent;
-  color: white;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.25s ease;
-  position: fixed;
-  top: 5px;
-  left: 30px;
-  background-color: rgb(24, 24, 95, 0.6)
-}
-
-.homeBlue:hover {
-  background: white;
-  color: #2463d4;
-}
-
-.homeBlue svg {
-  padding-top: 3px;
-  transform: scale(1.35)
-}
-
-.homeWhite {
+.userProfile-homeWhite {
   min-width: 50px;
   height: 46px;
   padding: 0 25px;
@@ -515,37 +470,47 @@
   left: 30px;
 }
 
-.homeWhite:hover {
+.userProfile-homeWhite:hover {
   background: #2463d4;
   color: white;
 }
 
-.homeWhite svg {
+.userProfile-homeWhite svg {
   padding-top: 3px;
-  transform: scale(1.35)
+  transform: scale(1.35);
 }
+
+
+/* THE LOGOUT BUTTON THAT REMAINS HIDDEN
+ AND IS ONLY DISPLAYED WHEN THE 768 MEDIA QUERRY IS ACTIVATED
+ SO THAT THE USER IS STILL ABLE TO LOG OUT 
+ WHEN THE INITIAL BUTTON NTERS DISPLAY HIDDEN */
+
+ .userProfile-logOutWhite{
+    display: none;
+ }
 
 /*  
    MOBILE
  */
 
 @media (max-width: 768px) {
-  .authWrapper {
+  .userProfile-Wrapper {
     padding: 15px;
   }
 
-  .authContainer {
+  .userProfile-Container {
     width: 100%;
     max-width: 430px;
     min-height: 650px;
     border-radius: 15px;
   }
 
-  .overlayContainer {
+  .userProfile-overlayContainer {
     display: none;
   }
 
-  .formContainerAuth {
+  .userProfile-formContainer {
     width: 100%;
     padding: 35px 25px;
   }
@@ -555,57 +520,71 @@
   }
 
   .signUpContainer {
-    left: 0;
+    right: 0;
   }
 
-  .authContainer.rightPanelActive .signInContainer {
+  .userProfile-Container.rightPanelActive .signInContainer {
     transform: translateX(0);
     opacity: 0;
     pointer-events: none;
   }
 
-  .authContainer.rightPanelActive .signUpContainer {
+  .userProfile-Container.rightPanelActive .signUpContainer {
     transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
   }
 
-  .authContainer:not(.rightPanelActive) .signInContainer {
+  .userProfile-Container:not(.rightPanelActive) .signInContainer {
     opacity: 1;
     pointer-events: auto;
   }
 
-  .mobileHidden {
-    display: none;
-  }
-
-  .formContainerAuth h1 {
+  .userProfile-formContainer h1 {
     font-size: 28px;
   }
+}
+
+.userProfile-logOutWhite {
+    display:block;
+  min-width: 50px;
+  height: 46px;
+  padding: 0 25px;
+  border-style: hidden;
+  /* border-bottom: 2px solid #2463d4; */
+  border: 2px solid rgb(36, 99, 212, 0.5);
+  border-radius: 25px;
+  background: transparent;
+  color: #2463d4;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position: fixed;
+  top: 5px;
+  right: 30px;
 }
 
 /*  
    SMALL PHONES
  */
 
+
+
 @media (max-width: 400px) {
-  .authContainer {
+  .userProfile-Container {
     min-height: 620px;
   }
 
-  .formContainerAuth {
+  .userProfile-formContainer {
     padding: 30px 20px;
   }
 
-  .authLogo span {
+  .userProfile-Logo span {
     font-size: 21px;
   }
 
-  .formContainerAuth h1 {
+  .userProfile-formContainer h1 {
     font-size: 25px;
-  }
-
-  .authSubtitle {
-    font-size: 13px;
   }
 }

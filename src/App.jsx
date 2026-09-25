@@ -5,6 +5,7 @@ import Products from "./Components/Products";
 import AboutUs from "./Components/AboutUs";
 import ProductCheckout from "./Components/ProductCheckout";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import UserProfile from './Components/UserProfile';
 import { supabase } from "./Components/SupabaseConnection"
 import {
   BrowserRouter as Router,
@@ -13,13 +14,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-// function ProtectedRoute({ children }) {
-//   const user = JSON.parse(localStorage.getItem("user"));
-//   return user ? children : <Navigate to="/login" replace />;
-// }
-
 function App() {
-
 
   return (
     <Router>
@@ -32,6 +27,11 @@ function App() {
           {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="/Products" element={<Products />} />
           <Route path="/About" element={<AboutUs />} />
+          <Route path="/UserProfile" element={
+                  <ProtectedRoute>
+              <UserProfile />  
+              </ProtectedRoute>
+            } />
           <Route
             path="/checkout"
             element={
