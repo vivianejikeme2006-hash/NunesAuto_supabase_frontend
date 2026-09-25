@@ -49,7 +49,7 @@ const addToCart = async(selectedItem)=>{
     // GETTING THE ACCESS TOKEN 
     const { data, error } = await supabase.auth.getSession();
 
-    if ( error ){
+    if ( error || !data["session"]){
       console.error(error);
       alert("Login to add the item to your cart.");
     }
