@@ -55,7 +55,7 @@ function NavBar() {
           </svg>
         </Link>
         <Link
-          to="/login"
+          to= {( JSON.parse(sessionStorage.getItem("authenticated")))?"/UserProfile":"/login"}
           className="na-icon-btn na-icon-btn--filled"
           aria-label="Account"
         >

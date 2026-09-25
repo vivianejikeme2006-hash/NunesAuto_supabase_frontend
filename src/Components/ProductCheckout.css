@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 .checkout-page {
   min-height: 100vh;
   background: #ffffff;
@@ -9,79 +5,18 @@
   color: #12356b;
 }
 
-/* =========================
-   NAVBAR
-========================= */
 
-.checkout-navbar {
-  height: 105px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 55px;
-  background: white;
-}
-
-.nunes-logo {
-  width: 100px;
-  cursor: pointer;
-}
-
-.nunes-logo img {
-  width: 65px;
-  height: auto;
-  object-fit: contain;
-}
-
-.checkout-navigation {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.checkout-navigation button {
-  border: none;
-  background: transparent;
-  color: #173d73;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.checkout-navigation button:hover {
-  opacity: 0.7;
-}
-
-.navbar-icons {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
-
-.nav-icon {
-  border: none;
-  background: transparent;
-  font-size: 27px;
-  color: #173d73;
-  cursor: pointer;
-}
-
-.theme-icon {
-  font-size: 35px;
-  font-weight: 300;
-}
-
-/* =========================
+/* 
    MAIN CONTAINER
-========================= */
+ */
 
 .checkout-container {
-  width: 84%;
+  width: 94%;
   max-width: 1280px;
-  min-height: 720px;
-  margin: 0 auto 50px;
+  min-height: 75vh;
+  margin: 0 auto 25px;
 
-  background: #94b4f1;
+  background: #729cea;
 
   border-radius: 28px;
 
@@ -98,84 +33,43 @@
   height: 100%;
 }
 
-/* =========================
-   PRODUCT SECTION
-========================= */
+/* PRODUCTS DISPLAY */
 
-.product-section {
-  display: flex;
-  flex-direction: column;
+.checkoutTitle{
+  font-weight: 800;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4,1fr) 0.25fr;
+  cursor: default;
+  text-align: center;
 }
 
-.product-title {
-  margin: 5px 0 80px;
-
-  color: white;
-
-  font-size: 45px;
-  font-weight: 400;
+.checkoutProducts{
+  font-weight: 700;
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4,1fr) 0.25fr;
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+  cursor: default;
 }
 
-.product-area {
-  display: flex;
-  align-items: center;
-  gap: 70px;
-}
-
-.product-thumbnails {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.thumbnail {
-  width: 42px;
-  height: 42px;
-
-  padding: 4px;
-
-  background: transparent;
-
-  border: 1px solid white;
-  border-radius: 9px;
-
+.productInfo{
+  height: 90%;
   cursor: pointer;
 }
 
-.thumbnail.active {
-  border: 2px solid white;
+/* REMOVE ITEM ICON */
+.checkoutDeleteItem{
+  color:red
 }
 
-.thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 5px;
-}
 
-.main-product-image {
-  width: 450px;
-  height: 380px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.main-product-image img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-
-  filter: drop-shadow(
-    0 10px 15px rgba(0, 0, 0, 0.08)
-  );
-}
-
-/* =========================
+/* 
    PAYMENT SECTION
-========================= */
+ */
 
 .payment-section {
   border-left: 2px solid rgba(255, 255, 255, 0.9);
@@ -189,62 +83,9 @@
   margin-bottom: 30px;
 }
 
-/* SEARCH */
-
-.search-box {
-  height: 65px;
-  flex: 1;
-
-  border: 1.5px solid white;
-  border-radius: 18px;
-
-  display: flex;
-  align-items: center;
-
-  padding: 0 18px;
-}
-
-.search-icon {
-  color: white;
-  font-size: 32px;
-  margin-right: 12px;
-}
-
-.search-box input {
-  width: 100%;
-
-  border: none;
-  outline: none;
-
-  background: transparent;
-
-  color: white;
-  font-size: 22px;
-}
-
-.search-box input::placeholder {
-  color: white;
-  opacity: 0.9;
-}
-
-.small-icon {
-  width: 62px;
-  height: 65px;
-
-  background: transparent;
-
-  border: 1.5px solid white;
-  border-radius: 13px;
-
-  color: white;
-  font-size: 23px;
-
-  cursor: pointer;
-}
-
-/* =========================
+/* 
    CHECKOUT
-========================= */
+ */
 
 .checkout-divider {
   width: 100%;
@@ -277,38 +118,33 @@
   font-weight: 500;
 }
 
-/* =========================
+/* 
    FORM
-========================= */
+ */
+
+ .checkout-inputContainer{
+  height:280px;
+  overflow-y: scroll;
+ }
 
 .form-group {
   margin-top: 18px;
 }
 
-.form-group label,
-.expiration-group label,
-.cvv-group label {
+.expiration-group label{
   display: block;
-
   margin-bottom: 8px;
-
   color: white;
   font-size: 16px;
 }
 
 .form-group input {
   width: 100%;
-  height: 64px;
-
-  padding: 0 25px;
-
+   padding: 10px 25px;
   border: 1.5px solid white;
   border-radius: 18px;
-
   outline: none;
-
   background: transparent;
-
   color: white;
   font-size: 17px;
 }
@@ -319,94 +155,65 @@
   opacity: 0.9;
 }
 
-/* =========================
+/* 
    EXPIRATION + CVV
-========================= */
+ */
 
-.payment-row {
+/* .payment-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-
   gap: 20px;
-
   margin-top: 18px;
-}
+} */
 
-.expiration-inputs {
+/* .expiration-inputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-}
+} */
 
 .expiration-inputs input,
 .cvv-group input {
   width: 100%;
-  height: 64px;
-
-  padding: 0 20px;
-
+  padding: 10px 20px;
   border: 1.5px solid white;
   border-radius: 18px;
-
   outline: none;
-
   background: transparent;
-
   color: white;
-
   font-size: 17px;
 }
 
-/* =========================
-   BALANCE
-========================= */
+/* BALANCE */
 
 .balance-row {
   display: flex;
   justify-content: space-between;
-
   margin-top: 30px;
   padding: 0 8px 12px;
-
   border-bottom: 2px solid white;
-
   color: white;
-
   font-size: 16px;
 }
 
-/* =========================
-   MESSAGE
-========================= */
-
-.checkout-message {
-  color: white;
-  font-size: 14px;
-  margin: 12px 0;
+.balance-row span:last-of-type{
+  font-size: 1.25rem;
+  color:rgb(13, 13, 104);
 }
 
-/* =========================
-   BUY BUTTON
-========================= */
+/* BUY BUTTON */
 
 .buy-button {
   width: 100%;
   height: 55px;
-
   margin-top: 20px;
-
   border: none;
   border-radius: 20px;
-
   background: #10356f;
-
   color: white;
-
   font-size: 20px;
   font-weight: 500;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
@@ -420,40 +227,31 @@
   cursor: not-allowed;
 }
 
-/* =========================
-   LOADING / ERROR
-========================= */
+/* LOADING / ERROR */
 
 .checkout-loading,
 .checkout-error {
   min-height: 100vh;
-
-  display: flex;
+ display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
-
   color: #12356b;
 }
 
 .checkout-error button {
   margin-top: 20px;
-
   padding: 12px 25px;
-
   border: none;
   border-radius: 8px;
-
   background: #12356b;
   color: white;
-
   cursor: pointer;
 }
 
-/* =========================
+/* 
    RESPONSIVE
-========================= */
+ */
 
 @media (max-width: 1000px) {
 
@@ -546,3 +344,29 @@
     font-size: 22px;
   }
 }
+
+@media (max-width: 550px) {
+
+.checkoutTitle{
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(4,1fr) 0.25fr;
+  cursor: default;
+  text-align: center;
+}
+
+}
+
+@media screen and (max-width: 400px){
+
+  .checkoutQuantityTitle{
+display: none;
+}
+
+.checkoutQuantity{
+display: none;
+}
+
+}
+

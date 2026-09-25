@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AuthPage.css";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./SupabaseConnection";
 
-function AuthPage({ initialMode = "login" }) {
+const AuthPage = ({ initialMode = "login" }) => {
   const [isSignUp, setIsSignUp] = useState(initialMode === "signup");
 
   // USESTATE THAT STORES THE DATA OF A USER THAT IS SIGNING UP
@@ -27,12 +27,6 @@ function AuthPage({ initialMode = "login" }) {
 
   // USED TO NAVIGATE BETWEEN DIFFERENT COMPONENTS AND PAGE STATES
   const navigate = useNavigate();
-
-  // CONNECTION USED TO CONNECT TO STRING TO CONNECT TO SUPABASE
-  const supabase = createClient(
-    import.meta.env.VITE_PUBLIC_SUPABASE_URL,
-    import.meta.env.VITE_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
-  );
 
   // SUPABASE FUNCTION USED TO LET A USER SIGNUP
   async function signUpNewUser(event) {
@@ -84,6 +78,7 @@ function AuthPage({ initialMode = "login" }) {
 
         let { message } = await response.json();
         console.log(message);
+        sessionStorage.setItem("authenticated",JSON.parse(true));
         navigate(-1);
       }
     } catch (error) {
@@ -113,6 +108,7 @@ function AuthPage({ initialMode = "login" }) {
         return alert(error);
       }
       console.log(data);
+        sessionStorage.setItem("authenticated",JSON.parse(true));
       navigate(-1);
     } catch (error) {
       console.error("Login error:", err);
@@ -180,9 +176,9 @@ function AuthPage({ initialMode = "login" }) {
   return (
     <div className="authWrapper">
       <div className={`authContainer ${isSignUp ? "rightPanelActive" : ""}`}>
-        {/* ================================
+        {/* =======
             SIGN UP FORM
-        ================================= */}
+        ======== */}
 
         <div
           className={`formContainerAuth signUpContainer ${
@@ -280,9 +276,9 @@ function AuthPage({ initialMode = "login" }) {
           </form>
         </div>
 
-        {/* ================================
+        {/* =======
             SIGN IN FORM
-        ================================= */}
+        ======== */}
 
         <div
           className={`formContainerAuth signInContainer ${
@@ -398,9 +394,9 @@ function AuthPage({ initialMode = "login" }) {
           </form>
         </div>
 
-        {/* ================================
+        {/* =======
             SLIDING OVERLAY
-        ================================= */}
+        ======== */}
 
         <div className="overlayContainer">
           <div className="overlay">
