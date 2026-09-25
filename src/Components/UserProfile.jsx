@@ -41,6 +41,30 @@ const UserProfile = () => {
       getUserData()
   },[])
 
+
+
+  // FUNCTION USED TO SIGN A USER OUT OF THE APPLICATION
+  const signOut = async() =>{
+    try{
+
+      // THIS WOULD BE A GLOBAL SCOPE SIGN OUT
+      // SIGNING THE USER OUT OF EVERY DEVICE THEY SIGNED INTO
+  const { error } = await supabase.auth.signOut()
+
+  if ( error ){
+    console.error(error);
+    alert(error);
+  } else{
+    alert("Signout was successful");
+return navigate(-1);
+  }
+    } catch (error){
+      console.error("Error signing a user out: ",error)
+    }
+  }
+
+
+
   // SUPABASE FUNCTION USED TO LET A USER SIGNUP
   async function resetUsersPassword(event) {
     try {
@@ -253,11 +277,7 @@ const UserProfile = () => {
                  <button
                   type="button"
                   className="userProfile-logOutWhite"
-                  onClick={ ()=>{
-                     sessionStorage.setItem("authenticated",JSON.stringify(false) )
-                    return navigate("/login");
-                    } }
-                >
+                  onClick={ ()=>{return signOut() } } >
                   Log Out
                 </button>
           </form>
@@ -290,11 +310,7 @@ const UserProfile = () => {
                 <button
                   type="button"
                   className="userProfile-ghostButton"
-                  onClick={ ()=>{
-                     sessionStorage.setItem("authenticated",JSON.stringify(false) )
-                    return navigate("/login");
-                    } }
-                >
+                  onClick={ ()=>{ return signOut() } } >
                   Log Out
                 </button>
               </div>
