@@ -55,8 +55,8 @@ const UserProfile = () => {
     console.error(error);
     alert(error);
   } else{
-    alert("Signout was successful");
-return navigate(-1);
+    sessionStorage.setItem("authenticated",JSON.stringify(false));
+return navigate("/login");
   }
     } catch (error){
       console.error("Error signing a user out: ",error)

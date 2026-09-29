@@ -9,31 +9,6 @@ const Home = () => {
   // USING NAVIGATE TO NAVIGATE TO OTHER PAGES
   const navigate = useNavigate();
 
-  // 
-// const [ allBrands, setAllBrands ] = useState([]);
-
-// useEffect( ()=>{
-//  const getAllBrands = async() =>{
-//   try{
-
-//   const response = await fetch(`${import.meta.env.VITE_RENDER_URL_BACKEND}/brands`,{
-//     headers: { "Content-Type" : "application/json" }
-//   });
-
-//   const { message } = await response.json();
-  
-//   setAllBrands( ()=>{ return [ ...message ] })
-// console.log("All of the brands: ",message)
-
-//   }
-// catch (error){
-//   console.error(error)
-// }
-//  }
-
-//  getAllBrands()
-// },[]) 
-
 
   return (
     <div className="na-page">
@@ -103,13 +78,7 @@ const Home = () => {
       </section>
 
       <section className="na-brands" aria-label="Brands we stock parts for">
-        {/* {allBrands.map((brand) => (
-          <img key={brand.id}
-            src={brand.image}
-            alt={brand.name}
-            className="na-brand-logo"
-          />
-        ))} */}
+   
            <img
             src="./Porsche.jpg"
             alt="Car logo"
