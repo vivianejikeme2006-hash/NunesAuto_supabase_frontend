@@ -3,6 +3,7 @@
   --na-navy: #1f2f52;
   --na-navy-ink: #16223b;
   --na-steel: #7f93b3;
+  --na-steelOpacity2: rgb(127, 147, 179, 0.55);
   --na-steelOpacity: rgba(15, 83, 192, 0.5);
   --na-steel-soft: #c7d1e2;
   --na-bg: #ffffff;
@@ -86,9 +87,7 @@
   display: grid;
   grid-template-columns: 0.5fr 1.4fr 0.6fr;
   align-items: center;
-  /* gap: 16px; */
   padding: 24px 48px 0px;
-  /* min-height: 480px; */
   height:68%;
 }
 
@@ -100,7 +99,7 @@
 .na-hero-heading {
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   line-height: 1.15;
   color: var(--na-navy-ink);
   margin: 0 0 16px;
@@ -143,7 +142,7 @@
 .na-wordmark {
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-size: 3.3rem;
   letter-spacing: 0.14em;
   color: var(--na-navy-ink);
   margin: 0 0 -1.4rem;
@@ -225,6 +224,7 @@
 }
 
 /* .na-dot {
+  display: none;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -269,40 +269,263 @@
   opacity: 0.85;
 }
 
-/* ---------- Responsive ---------- */
 
-@media (max-width: 960px) {
-  .na-hero {
-    grid-template-columns: 1fr;
-    text-align: center;
-    /* padding: 24px 24px 48px; */
+
+/*RESPONSIVENESS MEDIA QUERRIES*/
+
+
+
+@media screen and (max-width: 840px){
+
+  .na-hero-heading{
+font-size: 1.5rem;
   }
 
-  .na-hero-copy,
-  .na-hero-side {
-    max-width: none;
-    align-items: center;
+  .na-wordmark{
+    z-index: 2;
+    overflow-y: hidden;
   }
 
-  .na-badge--orders {
-    position: static;
-    margin-top: 16px;
-  }
-
-  .na-navbar {
-    flex-wrap: wrap;
-    padding: 16px 24px;
-  }
-
-  .na-brands {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 24px;
-  }
+ .na-hero {
+  grid-template-columns: 0.75fr 2fr 0.6fr;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* DISPLAYS THE "GET STARTED" BUTTON */
+.na-cta {
+   padding: 12px 15px;
+}
+
+}
+
+@media screen and (max-width: 760px){
+
+  /* MAIN CAR DISPLAY ON THE HOME PAGE */
+  .na-car-img{
+    z-index: 0;
+  width: 100%;
+  max-width: none;
+  /* height: auto; */
+  border: 2px dashed navy;
+  height: 50dvh;
+  transform: scale(2);
+}
+  
+  /* CONTAINER HOLDING ALL OF THE MAIN CONTENT ON THE HOME PAGE  */
+.na-hero {
+  padding: 0px 0px 0px;
+  height:auto;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  border: 4px solid green;
+  margin-bottom: 128px;
+}
+
+/* CONTAINER HLDING THE STORE NAME AS WELL AS THE MAIN CAR IMAGE */
+.na-hero-visual{
+  order: 1;
+  width: 100%;
+  border: 2px dashed orange;
+  height: 50dvh;
+}
+
+/* DISPLAYS ALL OF THE TEXT ON THE SCREEN */
+.na-hero-copy{
+  order: 2;
+  width: 100%;
+  border: 2px dashed rgb(255, 0, 0);
+  max-width: none;
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 15px;
+  position: static;
+  /* display: none; */
+}
+
+/* CONTAINS THE AMOUNT OF ORDERS ... 3700 */
+.na-hero-side{
+  order: 3;
+  width: 100%;
+  border: 2px dashed rgb(64, 0, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  position: static;
+}
+
+
+/* DISPLAYS THE AMOUNT OF CLIENTS THE BUSINESS HAS HAD ... 1500 */
+.na-badge--clients{
+display: block;
+position: absolute;
+top: 160px;
+left: 20px;
+  border: 2px dashed rgb(255, 0, 111);
+  z-index:1;
+  background-color: var( --na-steelOpacity2);
+}
+
+/* DISPLAYS THE RANDOM NAVY BLUE DOT ON THE SCREEN */
+.na-dot {
+display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--na-navy);
+  position: absolute;
+  left: 4px;
+  top: 145px;
+  z-index:2;
+}
+
+/* DISPLAYS THE "GET STARTED" BUTTON */
+.na-cta {
+   padding: 12px 15px;
+    position: absolute;
+  right: 14px;
+  top: 205px;
+}
+
+/* CONTAINER FOR ALL OF THE BRANDS */
+.na-brands{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 3;
+  background-color: white;
+}
+
+.na-brand-logo{
+height: 40px;
+  transform: scale(1.75);
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+}
+
+@media screen and ( max-width: 560px) {
+  
+  /* GET STARTED BUTTON */
   .na-cta {
-    transition: none;
+   padding: 12px 15px;
+display: none;
+}
+
+/* THE SOCIAL MEDIA ICONS */
+.na-social-icons{
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  margin : auto;
+}
+
+}
+
+@media screen and ( max-width: 450px) {
+
+    /* CONTAINER HLDING THE STORE NAME AS WELL AS THE MAIN CAR IMAGE */
+.na-hero-visual{
+height: 42dvh;
+}
+
+    /* MAIN CAR DISPLAY ON THE HOME PAGE */
+  .na-car-img{
+  border: 2px dashed navy;
+  transform: scale(1.5);
+  padding: 10px 10px 0px;
+}
+
+  /* TARGETTING THE LOGOG "NUNES AUTO */
+ .na-wordmark{
+  position: absolute;
+font-size: 2.5rem;
+overflow-y: auto;
+height: auto;
+border: 2px solid navy;
   }
+  
+  /* GET STARTED BUTTON */
+  .na-cta {
+   padding: 12px 15px;
+display: none;
+}
+
+/* DISPLAYS ALL OF THE TEXT ON THE SCREEN */
+.na-hero-copy{
+  border: 5px solid rgba(24, 9, 9, 0.655);
+  flex-flow: column wrap;
+  padding: 0px 5px;
+}
+
+/* THE TITLE UNDER THE MAIN CAR IMAGE */
+.na-hero-heading{
+  margin-top: 5px;
+font-size: 1.2rem;
+text-align: center;
+}
+
+.na-hero-heading br{
+display: none;
+}
+
+/* TARGETTING THE ABSOLUTE POSITION CONTAINERS */
+.na-badge{
+   padding: 5px 5px;
+  width: 110px;
+}
+
+.na-badge-number{
+font-size: 1.2rem;
+}
+
+/* DISPLAYS THE ORDERS INFORMATION ON THE SCREEN */
+.na-badge--orders {
+  top:90px;
+}
+
+/* DISPLAYS THE AMOUNT OF CLIENTS THE BUSINESS HAS HAD ... 1500 */
+.na-badge--clients{
+top: 190px;
+left: 10px;
+}
+
+/* DISPLAYS THE RANDOM NAVY BLUE DOT ON THE SCREEN */
+.na-dot {
+display: block;
+  width: 25px;
+  height: 25px;
+   left: 4px;
+  top: 180px;
+}
+
+/* DISPLAYS ALL OF THE LIGHT GREY TEXT */
+.na-hero-sub{
+  width: 100%;
+}
+
+/* DIV CONTAINER FOR THE CAR LOGOGS */
+.na-brands{
+  background-color: white;
+    padding: 0px 10px 0px 10px ;
+    height: 128px;
+  border: 2px dashed rgb(255, 0, 111);
+}
+
+/* DISPLAYS THE CAR LOGOS IN THE FOOTER */
+.na-brand-logo{
+height: 100%;
+  transform: scale(1.4);
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+
 }
