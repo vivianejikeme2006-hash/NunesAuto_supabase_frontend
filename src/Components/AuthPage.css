@@ -140,6 +140,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 17px;
+  position: relative;
 }
 
 .inputGroup label {
@@ -176,6 +177,22 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* SHOW PASSWORD / HIDE PASSWORD SVG */
+
+.inputGroup svg{
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.inputGroup svg:hover{
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+
 
 /* =========================================
    FORGOT PASSWORD
@@ -454,8 +471,9 @@
   height: 46px;
   padding: 0 25px;
   border-style: hidden;
-  border-bottom: 2px solid white;
-  /* border-radius: 10px; */
+  /* border-bottom: 2px solid white; */
+  border: 2px solid rgb(255, 255, 255, 0.5);
+  border-radius: 25px;
   background: transparent;
   color: white;
   font-size: 18px;
@@ -465,6 +483,7 @@
   position: fixed;
   top: 5px;
   left: 30px;
+  background-color: rgb(24, 24, 95, 0.6)
 }
 
 .homeBlue:hover {
@@ -472,13 +491,19 @@
   color: #2463d4;
 }
 
+.homeBlue svg {
+  padding-top: 3px;
+  transform: scale(1.35)
+}
+
 .homeWhite {
   min-width: 50px;
   height: 46px;
   padding: 0 25px;
   border-style: hidden;
-  border-bottom: 2px solid #2463d4;
-  /* border-radius: 10px; */
+  /* border-bottom: 2px solid #2463d4; */
+  border: 2px solid rgb(36, 99, 212, 0.5);
+  border-radius: 25px;
   background: transparent;
   color: #2463d4;
   font-size: 18px;
@@ -493,6 +518,11 @@
 .homeWhite:hover {
   background: #2463d4;
   color: white;
+}
+
+.homeWhite svg {
+  padding-top: 3px;
+  transform: scale(1.35)
 }
 
 /* =========================================

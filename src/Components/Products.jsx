@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/NavBar"
-
+import { createClient } from "@supabase/supabase-js";
 
 const Products = () => {
 
@@ -12,8 +12,13 @@ const Products = () => {
 //  STATE VARIABLE TGHAT IS USED TO STORE THE PRODUCTS COLLECTED FROM THE DATABASE
 const [ allParts,setAllParts] = useState([]);
 
-//  USEEFFECT THAT WILL COLLECT ALL OF THE PRODUCTS FROM THE PRODUCTS COLLECTION
+// CONNECTION TO SUPABASE 
+    const supabase = createClient(
+import.meta.env.VITE_PUBLIC_SUPABASE_URL,
+import.meta.env.VITE_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+);
 
+//  USEEFFECT THAT WILL COLLECT ALL OF THE PRODUCTS FROM THE PRODUCTS COLLECTION
 useEffect( ()=>{
 
   const getAllParts = async() =>{
@@ -42,27 +47,45 @@ useEffect( ()=>{
 
 },[])
 
+const addToCart = async(selectedItem)=>{
+  try{
 
+    // GETTING THE ACCESS TOKEN 
+    const { data, error } = await supabase.auth.getSession();
 
-// --- Content -----------------------------------------------------------
-// Swap these placeholder paths for real images once you have them.
-// Anything under /public is referenced as a plain string path, so the
-// app still builds and runs even before the files exist — you'll just
-// see a broken-image icon until you drop the real file in.
+    if ( error ){
+      console.error(error);
+      alert("Login to add the item to your cart.");
+    }
 
-const LOGO = "/assets/nunes-auto-logo.png";
-const HERO_WHEEL = "/assets/products/hero-wheel.png";
+console.log("Item to add to cart: ",selectedItem)
+   console.log("Users access token", data);
 
-const CATEGORIES = [
-  { name: "Tyres", image: "/assets/products/category-tyres.png" },
-  { name: "Suspensions", image: "/assets/products/category-suspensions.png" },
-  { name: "Engines", image: "/assets/products/category-engines.png" },
-];
+    const response = await fetch(`${import.meta.env.VITE_RENDER_URL_BACKEND}/addToCart`,{
+      method : "POST",
+      headers: {
+        "Content-Type":"application/json",
+        "authorization": `Bearer ${data.session.access_token}`
+      },
+      body: JSON.stringify({
+product_id: selectedItem.id,
+cart_item: selectedItem,
+quantity: 1
+      })
 
-function formatPrice(amount) {
-  return `R ${amount.toFixed(2)}`;
+    });
+
+    if( response.status !== 200 ){
+      alert("Login to add the item to your cart.");
+    }
+
+   const dataResponse = await response.json();
+    console.log("Response from product added to the cart: ",dataResponse);
+
+  } catch (error){
+    console.error("Error trying to add a product to a cart: ",error)
+  }
 }
-
 
 
   return (
@@ -79,22 +102,38 @@ function formatPrice(amount) {
             19&quot; Rims
           </p>
         </div>
-        <img src={HERO_WHEEL} alt="Ultra Wheel 19 inch rim" className="pp-hero-img" />
+        <img src="./productPageBannerWheel.png" alt="Ultra Wheel 19 inch rim" className="pp-hero-img" />
       </section>
 
 
 
 {/* SECTION USEDTO DISPLAY THE PRODUCTS THAT YOU WANT TO FILTER OUT */}
       <section className="pp-categories" aria-label="Shop by category">
-        {CATEGORIES.map((category) => (
-          <a key={category.name} href={`/products/${category.name.toLowerCase()}`} className="pp-category-card">
-            <img src={category.image} alt={category.name} className="pp-category-img" />
+        
+          <section className="pp-category-card">
+            <img src="./productPageBannerWheel.png" alt="Tyres" className="pp-category-img" />
             <div className="pp-category-overlay">
-              <span className="pp-category-name">{category.name}</span>
+              <span className="pp-category-name">Tyres</span>
               <span className="pp-category-shop">Shop now</span>
             </div>
-          </a>
-        ))}
+          </section>
+
+            <section className="pp-category-card">
+            <img src="./productPageSuspension.jpeg" alt="Suspensions" className="pp-category-img" />
+            <div className="pp-category-overlay">
+              <span className="pp-category-name">Suspensions</span>
+              <span className="pp-category-shop">Shop now</span>
+            </div>
+          </section>
+
+          <section className="pp-category-card">
+            <img src="./productPageEngine.jpeg" alt="Engine" className="pp-category-img" />
+            <div className="pp-category-overlay">
+              <span className="pp-category-name">Engines</span>
+              <span className="pp-category-shop">Shop now</span>
+            </div>
+          </section>
+       
       </section>
 
 
@@ -110,8 +149,8 @@ function formatPrice(amount) {
               <p className="pp-product-name">{product.brand}</p>
               <p className="pp-product-name">{product.name}</p>
               <div className="pp-product-footer">
-                <span className="pp-product-price">{formatPrice(product.price)}</span>
-                <button type="button" className="pp-add-cart">
+                <span className="pp-product-price">{product.price}</span>
+                <button type="button" className="pp-add-cart" onClick={ ()=>{ return addToCart(product) } }>
                   Add Cart 
                 </button>
               </div>
