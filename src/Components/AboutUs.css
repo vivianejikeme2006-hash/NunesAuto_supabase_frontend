@@ -1,0 +1,321 @@
+
+:root {
+  --au-navy: #1f2f52;
+  --au-navy-ink: #16223b;
+  --au-blue-soft: #a9b7e8;
+  --au-blue-footer: #97a8e6;
+  --au-text: #24304a;
+  --au-text-muted: #5b6478;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.au-page {
+  background: #ffffff;
+  color: var(--au-text);
+  font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ---------- Navbar ---------- */
+
+.au-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 48px;
+}
+
+.au-brand-mark {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.au-nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.au-nav-links a {
+  color: var(--au-navy);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+}
+
+.au-nav-links a.au-nav-active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.au-nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.au-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--au-navy);
+  cursor: pointer;
+}
+
+.au-icon-btn--filled {
+  background: var(--au-navy);
+  color: #fff;
+}
+
+/* ---------- Hero ---------- */
+
+.au-hero {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-color: #333;
+}
+
+.au-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 14, 26, 0.45),
+    rgba(10, 14, 26, 0.6)
+  );
+}
+
+.au-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  padding: 0 48px;
+  color: #fff;
+}
+
+.au-hero-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  margin: 0 0 20px;
+}
+
+.au-hero-copy {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ---------- Stats + Values ---------- */
+
+.au-stats-section {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 56px 48px;
+}
+
+.au-stats-photo {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.au-stats-content {
+  padding-top: 8px;
+}
+
+.au-stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.au-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.au-stat-number {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--au-navy-ink);
+}
+
+.au-stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--au-text-muted);
+}
+
+.au-values-heading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--au-navy-ink);
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.au-values-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0 auto;
+  max-width: 640px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--au-text);
+}
+
+.au-values-list strong {
+  color: var(--au-navy-ink);
+}
+
+/* ---------- Why Choose Us ---------- */
+
+.au-why {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-color: #333;
+}
+
+.au-why-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 14, 26, 0.4),
+    rgba(10, 14, 26, 0.6)
+  );
+}
+
+.au-why-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  text-align: center;
+  padding: 0 32px;
+  color: #fff;
+}
+
+.au-why-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  margin: 0 0 28px;
+}
+
+.au-why-copy {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---------- Footer ---------- */
+
+.au-footer {
+  background: var(--au-blue-footer);
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+  padding: 48px 48px 40px;
+}
+
+.au-footer-logo {
+  height: 40px;
+  width: auto;
+  margin-bottom: 12px;
+}
+
+.au-footer-heading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0 0 16px;
+}
+
+.au-footer-text {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.au-footer-social {
+  display: flex;
+  gap: 14px;
+}
+
+.au-footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+  .au-navbar {
+    flex-wrap: wrap;
+    padding: 16px 24px;
+  }
+
+  .au-hero-content {
+    padding: 0 24px;
+  }
+
+  .au-stats-section {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+  }
+
+  .au-stats-photo {
+    height: 260px;
+  }
+
+  .au-stats-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .au-footer {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+  }
+}

@@ -122,39 +122,33 @@ const Home = () => {
         </div>
       </section>
 
-      <section
-        className="na-brands"
-        aria-label="Brands we stock parts for"
-      >
-        <img
-          src="./Porsche.jpg"
-          alt="Car logo"
-          className="na-brand-logo"
-        />
-
-        <img
-          src="./Ferrari.jpg"
-          alt="Car logo"
-          className="na-brand-logo"
-        />
-
-        <img
-          src="Lamborghini.jpg"
-          alt="Car logo"
-          className="na-brand-logo"
-        />
-
-        <img
-          src="./AstonMartin.jpg"
-          alt="Car logo"
-          className="na-brand-logo"
-        />
-
-        <img
-          src="./BWM.jpg"
-          alt="Car logo"
-          className="na-brand-logo"
-        />
+      <section className="na-brands" aria-label="Brands we stock parts for">
+   
+           <img
+            src="./Porsche.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+            <img
+            src="./Ferrari.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+           <img
+            src="./Lamborghini.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          />
+            <img
+            src="./AstonMartin.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+            <img
+            src="./BWM.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          />  
       </section>
 
       {/* NUNES AUTO AI CHATBOT */}
