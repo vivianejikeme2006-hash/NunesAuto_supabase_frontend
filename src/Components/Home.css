@@ -305,7 +305,7 @@ font-size: 1.5rem;
   width: 100%;
   max-width: none;
   /* height: auto; */
-  border: 2px dashed navy;
+  /* border: 2px dashed navy; */
   height: 50dvh;
   transform: scale(2);
 }
@@ -317,7 +317,7 @@ font-size: 1.5rem;
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  border: 4px solid green;
+  /* border: 4px solid green; */
   margin-bottom: 128px;
 }
 
@@ -325,7 +325,7 @@ font-size: 1.5rem;
 .na-hero-visual{
   order: 1;
   width: 100%;
-  border: 2px dashed orange;
+  /* border: 2px dashed orange; */
   height: 50dvh;
 }
 
@@ -333,7 +333,7 @@ font-size: 1.5rem;
 .na-hero-copy{
   order: 2;
   width: 100%;
-  border: 2px dashed rgb(255, 0, 0);
+  /* border: 2px dashed rgb(255, 0, 0); */
   max-width: none;
   display: flex;
   flex-flow: row wrap;
@@ -349,7 +349,7 @@ font-size: 1.5rem;
 .na-hero-side{
   order: 3;
   width: 100%;
-  border: 2px dashed rgb(64, 0, 255);
+  /* border: 2px dashed rgb(64, 0, 255); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -364,7 +364,7 @@ display: block;
 position: absolute;
 top: 160px;
 left: 20px;
-  border: 2px dashed rgb(255, 0, 111);
+  /* border: 2px dashed rgb(255, 0, 111); */
   z-index:1;
   background-color: var( --na-steelOpacity2);
 }
@@ -437,7 +437,7 @@ height: 42dvh;
 
     /* MAIN CAR DISPLAY ON THE HOME PAGE */
   .na-car-img{
-  border: 2px dashed navy;
+  /* border: 2px dashed navy; */
   transform: scale(1.5);
   padding: 10px 10px 0px;
 }
@@ -448,7 +448,7 @@ height: 42dvh;
 font-size: 2.5rem;
 overflow-y: auto;
 height: auto;
-border: 2px solid navy;
+/* border: 2px solid navy; */
   }
   
   /* GET STARTED BUTTON */
@@ -459,7 +459,7 @@ display: none;
 
 /* DISPLAYS ALL OF THE TEXT ON THE SCREEN */
 .na-hero-copy{
-  border: 5px solid rgba(24, 9, 9, 0.655);
+  /* border: 5px solid rgba(24, 9, 9, 0.655); */
   flex-flow: column wrap;
   padding: 0px 5px;
 }
@@ -515,7 +515,7 @@ display: block;
   background-color: white;
     padding: 0px 10px 0px 10px ;
     height: 128px;
-  border: 2px dashed rgb(255, 0, 111);
+  /* border: 2px dashed rgb(255, 0, 111); */
 }
 
 /* DISPLAYS THE CAR LOGOS IN THE FOOTER */

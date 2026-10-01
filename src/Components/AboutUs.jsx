@@ -79,7 +79,7 @@ export default function AboutUs() {
 
       <section
         className="au-hero"
-        style={{ backgroundImage: `url(${HERO_BG})` }}
+        style={{ backgroundImage: `url(./About_About.jpeg)` }}
       >
         <div className="au-hero-overlay" />
         <div className="au-hero-content">
@@ -95,7 +95,7 @@ export default function AboutUs() {
       </section>
 
       <section className="au-stats-section">
-        <img src={PARTS_PHOTO} alt="Car parts" className="au-stats-photo" />
+        <img src="./About_OurValues.jpeg" alt="Car parts" className="au-stats-photo" />
 
         <div className="au-stats-content">
           <div className="au-stats-row">
@@ -123,7 +123,7 @@ export default function AboutUs() {
 
       <section
         className="au-why"
-        style={{ backgroundImage: `url(${WHY_CHOOSE_BG})` }}
+        style={{ backgroundImage: `url(./About_WhyChooseUs.jpeg)` }}
       >
         <div className="au-why-overlay" />
         <div className="au-why-content">
