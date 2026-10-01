@@ -169,7 +169,7 @@
   display: block;
   object-fit: contain;
   z-index: 1;
-  border: 2px dashed navy;
+  /* border: 2px dashed navy; */
   height: 50dvh;
   transform: scale(2);
 }
