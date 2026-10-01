@@ -9,6 +9,7 @@ const Home = () => {
   // USING NAVIGATE TO NAVIGATE TO OTHER PAGES
   const navigate = useNavigate();
 
+
   return (
     <div className="na-page">
 
