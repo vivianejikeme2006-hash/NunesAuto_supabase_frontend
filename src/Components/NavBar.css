@@ -77,3 +77,11 @@
 .navIconButtonPrimary:hover {
   background-color: #2559c7;
 }
+
+/* MEDIA QUERRIES */
+
+@media screen and (max-width: 780px){
+  .na-brand{
+    display: none
+  }
+}
