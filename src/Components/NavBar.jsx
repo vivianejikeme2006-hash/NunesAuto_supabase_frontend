@@ -32,7 +32,9 @@ function NavBar() {
           </Link>
           <Link to="/About" className="navLink">
             About Us
-          </Link>
+            </Link>  <Link to="/AdminDashboard" className="navLink">
+            Admin Dashboard
+            </Link>
         </div>
       </nav>
 
