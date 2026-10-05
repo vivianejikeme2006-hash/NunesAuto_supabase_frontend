@@ -52,26 +52,10 @@
   flex-direction: column;
 }
 
-/*  
-   SIGN IN
- */
-
-/* .signInContainer {
-  left: 0;
-  z-index: 2;
-} */
-
-/* .userProfile-Container.rightPanelActive .signInContainer {
-  transform: translateX(100%);
-} */
-
-/*  
-   SIGN UP
- */
+/* SIGN UP */
 
 .userProfile-signUpContainer {
   left: 0;
-  /* opacity: 0; */
   z-index: 1;
 }
 

@@ -1,29 +1,51 @@
+import React, { useRef } from 'react';
+
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 
 function NavBar() {
+
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
 
+  // USEREFS USED TO DISPLAY THE NAVBAR WHEN IT IS IN THE HAMBURGER FORMAT
+  const navLinksTransform = useRef(); 
+  const naNavIconsTransform = useRef(); 
+  const naNavBarTransform = useRef(); 
+  
+ 
   const handleLogout = () => {
     localStorage.removeItem("user");
     navigate("/login");
   };
 
+  const displayNavLinks = () =>{
+naNavIconsTransform.current.classList.toggle("naNavIconsTransform");
+navLinksTransform.current.classList.toggle("navLinksTransform");
+naNavBarTransform.current.classList.toggle("naNavBarTransform");
+  }
+
   return (
-    <header className="na-navbar">
+    <header className="na-navbar" ref={naNavBarTransform}>
       <div className="na-brand">
+        <section className=" brandContainer" >
         <img
           src="./NunesAutoLogo.jpeg"
           alt="Nunes Auto"
-          className="na-brand-mark"
+          className="nav-brand-mark"
         />
+        </section>
+        <svg onClick={displayNavLinks} className="na-hamburger" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17h18M3 12h18M3 7h18" />
+</svg>
+
       </div>
 
       {/* NAVBAR SECTION  */}
 
-      <nav className="pp-nav-links">
-        <div className="navLinks">
+      <nav className="pp-nav-links" >
+        <div className="navLinks" ref={navLinksTransform}>
           <Link to="/" className="navLink">
             Home
           </Link>
@@ -39,7 +61,7 @@ function NavBar() {
       </nav>
 
       {/* ICONS NAVBAR SECTION */}
-      <div className="na-nav-icons">
+      <div className="na-nav-icons" ref={naNavIconsTransform}>
         <Link className="na-icon-btn" aria-label="Cart" to="/checkout">
           <svg
             viewBox="0 0 24 24"
