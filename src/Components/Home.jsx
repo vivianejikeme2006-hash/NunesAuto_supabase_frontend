@@ -8,7 +8,10 @@ const Home = () => {
   // USING NAVIGATE TO NAVIGATE TO OTHER PAGES
   const navigate = useNavigate();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a32174ae5ab87afd630f3fd2e94a131dc5ff38c9
   return (
     <div className="na-page">
 
@@ -122,6 +125,7 @@ const Home = () => {
         </div>
       </section>
 
+<<<<<<< HEAD
       <section
         className="na-brands"
         aria-label="Brands we stock parts for"
@@ -155,6 +159,35 @@ const Home = () => {
           alt="Car logo"
           className="na-brand-logo"
         />
+=======
+      <section className="na-brands" aria-label="Brands we stock parts for">
+   
+           <img
+            src="./Porsche.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+            <img
+            src="./Ferrari.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+           <img
+            src="./Lamborghini.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          />
+            <img
+            src="./AstonMartin.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          /> 
+            <img
+            src="./BWM.jpg"
+            alt="Car logo"
+            className="na-brand-logo"
+          />  
+>>>>>>> a32174ae5ab87afd630f3fd2e94a131dc5ff38c9
       </section>
 
     </div>
