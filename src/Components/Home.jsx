@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import Chatbot from "./Chatbot";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/NavBar";
 
@@ -157,9 +156,6 @@ const Home = () => {
           className="na-brand-logo"
         />
       </section>
-
-      {/* NUNES AUTO AI CHATBOT */}
-      <Chatbot />
 
     </div>
   );

@@ -6,7 +6,7 @@ import AboutUs from "./Components/AboutUs";
 import ProductCheckout from "./Components/ProductCheckout";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import UserProfile from './Components/UserProfile';
-import { supabase } from "./Components/SupabaseConnection"
+import AdminDashboard from "./Components/AdminDashboard"
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,7 +20,6 @@ function App() {
     <Router>
       <div>
         <Routes>
-          {/* <Route path="/" element={<RootRedirect />} /> */}
           <Route path="/signup" element={<AuthPage initialMode="signup" />} />
           <Route path="/login" element={<AuthPage initialMode="login" />} />
           <Route path="/" element={<Home />} />
@@ -37,6 +36,13 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProductCheckout />
+              </ProtectedRoute>
+            }
+          />  <Route
+            path="/AdminDashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
               </ProtectedRoute>
             }
           />
