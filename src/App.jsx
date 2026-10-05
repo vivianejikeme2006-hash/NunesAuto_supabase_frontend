@@ -24,7 +24,6 @@ function App() {
           <Route path="/signup" element={<AuthPage initialMode="signup" />} />
           <Route path="/login" element={<AuthPage initialMode="login" />} />
           <Route path="/" element={<Home />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="/Products" element={<Products />} />
           <Route path="/About" element={<AboutUs />} />
           <Route
@@ -33,31 +32,27 @@ function App() {
               <ProtectedRoute>
                 <AdminDashboard />
               </ProtectedRoute>
-
-            }
-          />
-          <Route 
+            } />
+          <Route
             path="/Order"
             element={
               <ProtectedRoute>
                 <Order />
               </ProtectedRoute>
-
-            }
-            />
-          <Route path="/UserProfile" element={
-            <ProtectedRoute>
-              <UserProfile />
-            </ProtectedRoute>
-          } />
+            } />
+          <Route path="/UserProfile"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            } />
           <Route
             path="/checkout"
             element={
               <ProtectedRoute>
                 <ProductCheckout />
               </ProtectedRoute>
-            }
-          />
+            } />
         </Routes>
       </div>
     </Router>
