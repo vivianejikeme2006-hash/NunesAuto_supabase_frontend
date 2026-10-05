@@ -7,6 +7,7 @@ import ProductCheckout from "./Components/ProductCheckout";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import UserProfile from './Components/UserProfile';
 import AdminDashboard from "./Components/AdminDashboard"
+import Order from "./Pages/Order";
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,23 +27,34 @@ function App() {
           {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="/Products" element={<Products />} />
           <Route path="/About" element={<AboutUs />} />
-          <Route path="/UserProfile" element={
-                  <ProtectedRoute>
-              <UserProfile />  
+          <Route
+            path="/AdminDashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
               </ProtectedRoute>
-            } />
+
+            }
+          />
+          <Route 
+            path="/Order"
+            element={
+              <ProtectedRoute>
+                <Order />
+              </ProtectedRoute>
+
+            }
+            />
+          <Route path="/UserProfile" element={
+            <ProtectedRoute>
+              <UserProfile />
+            </ProtectedRoute>
+          } />
           <Route
             path="/checkout"
             element={
               <ProtectedRoute>
                 <ProductCheckout />
-              </ProtectedRoute>
-            }
-          />  <Route
-            path="/AdminDashboard"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
               </ProtectedRoute>
             }
           />

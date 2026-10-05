@@ -32,9 +32,13 @@ function NavBar() {
           </Link>
           <Link to="/About" className="navLink">
             About Us
-            </Link>  <Link to="/AdminDashboard" className="navLink">
+          </Link>
+          <Link to="/AdminDashboard" className="navLink">
             Admin Dashboard
-            </Link>
+          </Link>
+          <Link to="/Order" className="navLink">
+            Order
+          </Link>
         </div>
       </nav>
 
@@ -57,7 +61,7 @@ function NavBar() {
           </svg>
         </Link>
         <Link
-          to= {( JSON.parse(sessionStorage.getItem("authenticated")))?"/UserProfile":"/login"}
+          to={(JSON.parse(sessionStorage.getItem("authenticated"))) ? "/UserProfile" : "/login"}
           className="na-icon-btn na-icon-btn--filled"
           aria-label="Account"
         >
