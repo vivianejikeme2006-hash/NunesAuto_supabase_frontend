@@ -1,0 +1,381 @@
+
+/* ================================
+   NUNESAUTO - ORDERS PAGE
+================================ */
+
+.orders-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eaf6ff 0%, #f5faff 50%, #dcefff 100%);
+  color: #062b52;
+}
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.orders-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0 80px;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.orders-header {
+  margin-bottom: 35px;
+}
+
+.orders-small-title {
+  color: #1683d8;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.orders-header h1 {
+  color: #062b52;
+  font-size: 38px;
+  margin: 0 0 10px;
+  font-weight: 800;
+}
+
+.orders-header p {
+  color: #426783;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ================================
+   ORDER TABS
+================================ */
+
+.order-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.order-tabs button {
+  border: 1px solid #9dcced;
+  background-color: #ffffff;
+  color: #07558f;
+  padding: 11px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.order-tabs button:hover {
+  background-color: #d8efff;
+  border-color: #1683d8;
+  color: #062b52;
+}
+
+.order-tabs .active-tab {
+  background: linear-gradient(135deg, #062b52, #0878c9);
+  color: white;
+  border-color: #062b52;
+  box-shadow: 0 5px 15px rgba(6, 43, 82, 0.25);
+}
+
+/* ================================
+   ORDER CARD
+================================ */
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.order-card {
+  background: linear-gradient(145deg, #ffffff, #f0f8ff);
+  border: 1px solid #b9dcf5;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(8, 99, 160, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Blue accent line */
+
+.order-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #062b52, #1683d8, #55b9f5);
+}
+
+/* ================================
+   ORDER TOP
+================================ */
+
+.order-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: 25px;
+}
+
+.order-label {
+  display: block;
+  color: #5d88a8;
+  font-size: 12px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+}
+
+.order-top h2 {
+  color: #062b52;
+  font-size: 20px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.order-date p {
+  color: #245678;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ================================
+   STATUS
+================================ */
+
+.order-status {
+  padding: 9px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.order-status.processing {
+  background-color: #cceaff;
+  color: #0565a5;
+  border: 1px solid #8fd0f7;
+}
+
+.order-status.delivered {
+  background-color: #d8f3ff;
+  color: #0878a8;
+  border: 1px solid #91d8f2;
+}
+
+/* ================================
+   DIVIDER
+================================ */
+
+.order-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #a9d5f2,
+    transparent
+  );
+  margin: 25px 0;
+}
+
+/* ================================
+   PRODUCTS
+================================ */
+
+.order-products h3 {
+  color: #07558f;
+  font-size: 17px;
+  margin: 0 0 15px;
+  font-weight: 800;
+}
+
+.order-product {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 13px 0;
+}
+
+/* Product image area */
+
+.product-placeholder {
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #d9f1ff, #b8e2fa);
+  border: 1px solid #91cbed;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 10px rgba(14, 116, 180, 0.12);
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h4 {
+  color: #062b52;
+  font-size: 15px;
+  margin: 0 0 6px;
+  font-weight: 800;
+}
+
+.product-info p {
+  color: #63839b;
+  font-size: 13px;
+  margin: 0;
+}
+
+.product-price {
+  color: #0878c9;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* ================================
+   ORDER BOTTOM
+================================ */
+
+.order-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 70px;
+  border-top: 1px solid #b9dcf5;
+  padding-top: 20px;
+  margin-top: 15px;
+}
+
+.payment-info span,
+.order-total span {
+  display: block;
+  color: #5d88a8;
+  font-size: 12px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.payment-info strong {
+  color: #245678;
+  font-size: 14px;
+}
+
+.order-total strong {
+  color: #062b52;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* ================================
+   ACTIONS
+================================ */
+
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.details-button,
+.track-button {
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.details-button {
+  background-color: #ffffff;
+  color: #07558f;
+  border: 1px solid #8fc8eb;
+}
+
+.details-button:hover {
+  background-color: #dff2ff;
+  border-color: #1683d8;
+  color: #062b52;
+}
+
+.track-button {
+  background: linear-gradient(135deg, #062b52, #0878c9);
+  color: white;
+  border: 1px solid #062b52;
+  box-shadow: 0 4px 12px rgba(6, 43, 82, 0.2);
+}
+
+.track-button:hover {
+  background: linear-gradient(135deg, #0a3d6d, #0992ed);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(6, 43, 82, 0.3);
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .orders-container {
+    width: 92%;
+    padding-top: 30px;
+  }
+
+  .orders-header h1 {
+    font-size: 30px;
+  }
+
+  .order-card {
+    padding: 18px;
+  }
+
+  .order-top {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .order-status {
+    width: fit-content;
+  }
+
+  .order-bottom {
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .order-actions {
+    justify-content: stretch;
+    flex-direction: column;
+  }
+
+  .details-button,
+  .track-button {
+    width: 100%;
+  }
+
+  .product-placeholder {
+    width: 55px;
+    height: 55px;
+  }
+
+  .product-price {
+    font-size: 14px;
+  }
+}

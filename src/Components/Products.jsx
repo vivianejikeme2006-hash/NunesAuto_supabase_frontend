@@ -9,8 +9,11 @@ const Products = () => {
   // USED TO NAVIGATE BETWEEN THE DIFFERENT COMPONENTS
   const navigate = useNavigate();
 
-  //  STATE VARIABLE TGHAT IS USED TO STORE THE PRODUCTS COLLECTED FROM THE DATABASE
-  const [allParts, setAllParts] = useState([]);
+//  STATE VARIABLE TGHAT IS USED TO STORE THE PRODUCTS COLLECTED FROM THE DATABASE
+const [ allParts,setAllParts] = useState([]);
+
+
+
 
   //  USEEFFECT THAT WILL COLLECT ALL OF THE PRODUCTS FROM THE PRODUCTS COLLECTION
   useEffect(() => {
