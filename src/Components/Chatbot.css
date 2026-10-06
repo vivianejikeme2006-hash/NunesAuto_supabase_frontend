@@ -97,6 +97,39 @@
   line-height: 1.5;
 }
 
+.typingDots {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.typingDots span {
+  font-size: 20px;
+  animation: typing 1.4s infinite;
+}
+
+.typingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
 .chatbotInput {
   display: flex;
 
