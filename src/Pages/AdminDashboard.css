@@ -1,10 +1,3 @@
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --blue-bg: #9bbcf7;
   --dark-blue: #102f69;
@@ -15,25 +8,15 @@
   --text: #ffffff;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  min-height: 100vh;
-  background: #f4f4f4;
-}
-
-/* ------------------------------
-   APP
------------------------------- */
+/* APP */
 
 .app {
-  min-height: 100vh;
-  padding: 28px;
+  height: 100dvh;
   background: #f5f5f5;
 }
 
 .app-shell {
-  width: min(1500px, 100%);
-  min-height: 820px;
+  width: 60%;
   margin: auto;
   padding: 32px;
   display: flex;
@@ -47,117 +30,8 @@ body {
     inset 0 0 35px rgba(255, 255, 255, 0.12);
 }
 
-/* ------------------------------
-   SIDEBAR
------------------------------- */
 
-.sidebar {
-  width: 185px;
-  flex: 0 0 185px;
-
-  padding: 22px 20px;
-
-  border: 3px solid var(--border);
-  border-radius: 20px;
-
-  color: white;
-}
-
-.brand {
-  text-align: center;
-  margin-bottom: 34px;
-}
-
-.brand-logo {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 5px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: white;
-  font-size: 28px;
-  font-weight: 700;
-
-  background: #102e67;
-  clip-path: polygon(
-    20% 5%,
-    80% 5%,
-    95% 20%,
-    95% 80%,
-    50% 95%,
-    5% 80%,
-    5% 20%
-  );
-}
-
-.brand-name {
-  font-size: 6px;
-  letter-spacing: 0.5px;
-  color: #15326b;
-  font-weight: 600;
-}
-
-.menu-section h4 {
-  margin: 0 0 12px 2px;
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.menu-section.general {
-  margin-top: 50px;
-}
-
-.nav-item {
-  width: 100%;
-  height: 34px;
-
-  display: flex;
-  align-items: center;
-  gap: 9px;
-
-  border: 0;
-  background: transparent;
-
-  color: rgba(255, 255, 255, 0.9);
-  font-family: inherit;
-  font-size: 12px;
-
-  cursor: pointer;
-  text-align: left;
-
-  transition: 0.2s ease;
-}
-
-.nav-item:hover {
-  transform: translateX(3px);
-  color: white;
-}
-
-.nav-item.active {
-  color: white;
-}
-
-.nav-icon {
-  width: 18px;
-  display: inline-flex;
-  justify-content: center;
-
-  color: #005fae;
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.nav-item:nth-child(n + 2) .nav-icon {
-  color: #123b76;
-}
-
-/* ------------------------------
-   MAIN CONTENT
------------------------------- */
+/* MAIN CONTENT */
 
 .content {
   flex: 1;
@@ -168,9 +42,9 @@ body {
   gap: 24px;
 }
 
-/* ------------------------------
+/*   
    TOP BAR
------------------------------- */
+   */
 
 .topbar {
   min-height: 65px;
@@ -243,9 +117,9 @@ body {
   opacity: 0.9;
 }
 
-/* ------------------------------
+/*   
    DASHBOARD
------------------------------- */
+   */
 
 .dashboard {
   flex: 1;
@@ -253,10 +127,9 @@ body {
 
   padding: 14px 18px 20px;
 
-  border: 3px solid var(--border);
   border-radius: 19px;
 
-  color: white;
+  color: rgb(8, 8, 8);
 }
 
 .dashboard-header {
@@ -265,6 +138,9 @@ body {
   justify-content: space-between;
 
   margin-bottom: 12px;
+  border: 3px solid var(--border);
+  border-radius: 19px;
+  padding: 14px 18px 20px;
 }
 
 .dashboard-header h1 {
@@ -277,7 +153,52 @@ body {
   margin-top: 8px;
 
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(1, 1, 1, 0.9);
+}
+
+.dashboard-body {
+  display: flex;
+  flex-flow:column nowrap;
+  justify-content: space-evenly;
+  align-items: center ;
+border: 3px solid var(--border);
+  border-radius: 19px;
+  padding: 14px 18px 10px;
+  width: 75%;
+  height: 55dvh;
+  margin: auto;
+}
+
+.dashbord-input{
+width: 90%;
+height: 15%;
+border-radius: 10px;
+padding: 0px 10px;
+border: 2px solid white;
+background-color: transparent;
+color: black;
+font-weight: 750;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.1rem;
+}
+
+.dashbord-input::placeholder{
+  color: rgba(0, 0, 0, 0.627);
+  font-size: 1.1rem;
+padding: 20px 10px;
+}
+
+.addCarPartBtn{
+  height: 10%;
+  padding: 0px 35px;
+  border: 0;
+  border-radius: 24px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+color: white;
+  background: var(--dark-blue);
+  cursor: pointer;
 }
 
 .actions {
@@ -314,89 +235,13 @@ body {
   background: #fff;
 }
 
-/* ------------------------------
-   CARDS
------------------------------- */
 
-.card-grid {
-  display: grid;
 
-  grid-template-columns:
-    1.4fr
-    0.8fr
-    0.8fr
-    0.8fr;
-
-  grid-template-rows:
-    105px
-    135px
-    105px;
-
-  gap: 14px;
-}
-
-.dashboard-card {
-  min-width: 0;
-  min-height: 0;
-
-  border-radius: 17px;
-  background: var(--card);
-
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-}
-
-.dashboard-card.dark {
-  background: var(--dark-blue);
-}
-
-/*
-  Match the asymmetric layout
-  shown in the screenshot.
-*/
-
-.dashboard-card:nth-child(1) {
-  grid-column: 1;
-}
-
-.dashboard-card:nth-child(2) {
-  grid-column: 2;
-}
-
-.dashboard-card:nth-child(3) {
-  grid-column: 3;
-}
-
-.dashboard-card:nth-child(4) {
-  grid-column: 4;
-}
-
-.dashboard-card:nth-child(5) {
-  grid-column: 1 / span 2;
-}
-
-.dashboard-card:nth-child(6) {
-  grid-column: 3;
-}
-
-.dashboard-card:nth-child(7) {
-  grid-column: 4;
-}
-
-.dashboard-card:nth-child(8) {
-  grid-column: 1 / span 2;
-}
-
-.dashboard-card:nth-child(9) {
-  grid-column: 3 / span 2;
-}
-
-/* ------------------------------
-   RESPONSIVE
------------------------------- */
+/* RESPONSIVE */
 
 @media (max-width: 1000px) {
   .app {
-    padding: 15px;
+    /* padding: 15px; */
   }
 
   .app-shell {
@@ -416,52 +261,23 @@ body {
   .profile-info {
     display: none;
   }
+}
 
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 110px);
-  }
+@media (max-width: 750px) {
+.app-shell {
+  width: 90%;
+    padding:  5px;
+}
+.dashboard-body{
+  width: 95%;
+    padding:  5px;
+}
 
-  .dashboard-card:nth-child(n) {
-    grid-column: auto;
-  }
-
-  .dashboard-card:nth-child(1) {
-    grid-column: span 1;
-  }
-
-  .dashboard-card:nth-child(5),
-  .dashboard-card:nth-child(8) {
-    grid-column: span 2;
-  }
 }
 
 @media (max-width: 700px) {
   .app {
     padding: 0;
-  }
-
-  .app-shell {
-    min-height: 100vh;
-    padding: 15px;
-
-    flex-direction: column;
-    border-radius: 0;
-  }
-
-  .sidebar {
-    width: 100%;
-    flex: none;
-
-    display: flex;
-    align-items: center;
-    gap: 25px;
-
-    padding: 12px 18px;
-  }
-
-  .brand {
-    margin: 0;
   }
 
   .menu-section {
@@ -499,10 +315,6 @@ body {
     padding: 0 10px;
   }
 
-  .card-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -522,12 +334,4 @@ body {
     font-size: 10px;
   }
 
-  .card-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(9, 100px);
-  }
-
-  .dashboard-card:nth-child(n) {
-    grid-column: auto;
-  }
-}
+ }

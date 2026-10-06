@@ -45,7 +45,7 @@ const Facebook = (props) => (
   </svg>
 );
 
-// --- Content -----------------------------------------------------------
+// --- Content   -----------------------------
 // Swap these placeholder paths for real images once you have them.
 // Anything under /public is referenced as a plain string path, so the
 // app still builds and runs even before the files exist — you'll just

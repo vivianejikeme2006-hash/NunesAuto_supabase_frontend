@@ -6,7 +6,7 @@ import AboutUs from "./Components/AboutUs";
 import ProductCheckout from "./Components/ProductCheckout";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import UserProfile from './Components/UserProfile';
-import AdminDashboard from "./Components/AdminDashboard"
+import AdminDashboard from "./Pages/AdminDashboard"
 import Order from "./Pages/Order";
 import {
   BrowserRouter as Router,
@@ -40,6 +40,9 @@ function App() {
                 <Order />
               </ProtectedRoute>
             } />
+
+
+            {/* NAVBAR ICONS */}
           <Route path="/UserProfile"
             element={
               <ProtectedRoute>
