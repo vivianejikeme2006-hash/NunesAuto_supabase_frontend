@@ -139,7 +139,7 @@ const ProductCheckout = () => {
       const { data } = await supabase.auth.getSession();
       const accessToken = data.session.access_token;
 
-      // console.log(`The access tokend of the user ${accessToken}`)
+      // console.log(`The access token of the user ${accessToken}`)
 
       if (accessToken) {
         const response = await fetch(

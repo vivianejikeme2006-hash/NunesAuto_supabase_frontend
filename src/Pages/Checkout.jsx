@@ -31,7 +31,7 @@ const Search = (props) => (
   </svg>
 );
 
-// --- Content -----------------------------------------------------------
+// --- Content   -----------------------------
 // Swap these placeholder paths for real images once you have them.
 const LOGO = "/assets/nunes-auto-logo.png";
 
